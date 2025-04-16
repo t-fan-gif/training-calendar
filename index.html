@@ -110,6 +110,21 @@
         overflow-wrap: break-word;
       }
 
+      @media (max-width: 768px) {
+ 　　　　 html, body {
+　　　　    font-size: 14px; /* スマホ向けの文字サイズ */
+　　　　  }
+
+　　　　  #calendar-title {
+　　　　    font-size: 1.5rem; /* 小さい画面でのタイトルサイズ */
+　　　　  }
+
+　　　　  .form-group input,
+　　　　  .form-group select {
+　　　　    font-size: 0.9rem; /* フォームの文字サイズ */
+　　　　  }
+　　　　}
+
     </style>
   </head>
   <body>
