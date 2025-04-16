@@ -1,6 +1,6 @@
 {
   "name": "グラウンド予約",
-  "short_name": "予約",
+  "short_name": "YAAカレンダー",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
