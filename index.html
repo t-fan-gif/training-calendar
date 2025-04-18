@@ -193,7 +193,7 @@
 
           events: async function (fetchInfo, successCallback, failureCallback) {
             try {
-              const response = await fetch("https://script.google.com/macros/s/AKfycbwzzZG649dNutJ-vbv4ehlHDMpZFTCekBAxCvR6Fxhayzm_POKoiTHcLJMjKVmtxIM6TQ/exec");
+              const response = await fetch("https://script.google.com/macros/s/AKfycbwYzRX427hD3Gu5wYLCfFs_yrPjK57l4Sb161OURoIt2qq-RladEMDjRBE5umASHWEuUg/exec");
               const events = await response.json();
 
               const processedEvents = events.map(event => {
