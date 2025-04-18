@@ -193,7 +193,7 @@
 
           events: async function (fetchInfo, successCallback, failureCallback) {
             try {
-              const response = await fetch("https://script.google.com/macros/s/AKfycbxwgcH9dH27ZlaId91DzNIDYAumU3dq4B_OdW-sK1r7qgPNL1-z5WmRq8zo_df2lCjJsA/exec");
+              const response = await fetch("https://script.google.com/macros/s/AKfycbwXL-4VGxfUUVJuFxO0CbHXlB5-Tmo9wkIVI5puwROzQxei7VGAE8RZTnqTua3UPFdgNA/exec");
               const events = await response.json();
 
               const processedEvents = events.map(event => {
@@ -253,7 +253,7 @@
         button.textContent = "送信中．．．";
 
         try {
-          const response = await fetch("https://script.google.com/macros/s/AKfycbxkUxnpWe0fpeHN3EFByEuuMfO6820woYbRr-GqWpphrFXEqt97eQSpExXFGKYwI0-HJw/exec", {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbxObhEZCDbpwNEeWAxbYHp7hfJ02CfJrqi20-Sg71b3fhahTTLp2UlVSQI8rO3oqGHWBw/exec", {
             method: "POST",
             body: JSON.stringify(data)
           });
