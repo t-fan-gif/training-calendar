@@ -143,15 +143,7 @@
       data-type="standard"
       data-size="large">
     </div>
-    <script>
-    function handleCredentialResponse(response) {
-      console.log(response);
-      const id_token = response.credential;
-    }
-    </script>
-
-      
-
+    
     <!-- タイトル-->
     <div id="calendar-title">academyトレーニングカレンダー</div>
     <div id="calendar"></div>
@@ -194,27 +186,37 @@
       </div>
     </form>
 
-    <script>
-    let calendar;
-    </script>
     <!-- ここまで画像描写設定 ---------------------------------------------------->
 
 
     
     <script>
+      let idToken = null; //グローバル変数に保存
+      let calendar; //グローバルに出す
       // Googleログイン成功後の処理
-      function onGoogleSignIn(response) {
-        console.log(response.credential); // トークンを取得
-        showCalendar(); // ログイン成功後にカレンダーを表示
+      function handleCredentialResponse(response){
+        idToken = response.credential;
+        fetchEventsAndShowCalendar();//イベントを受け取ってカレンダー表示
+      }
+
+      async function fetchEventsAndShowCalendar(){
+        try{
+          const res = await fetch(`https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec?token=${idToken}`)
+          const events = await res.json();
+          console.log(events); 
+          showCalendar(events); 
+        } catch (err) {
+          console.error("イベント取得エラー:", err);
+        }
       }
 
       //カレンダー表示処理
-      function showCalendar(){
+      function showCalendar(events){
       document.getElementById("calendar").style.display = "block"; // カレンダーを表示
         //カレンダー再描写
       document.addEventListener('DOMContentLoaded', function () {
         const calendarEl = document.getElementById('calendar');
-        const calendar = new FullCalendar.Calendar(calendarEl, {
+        calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
           locale: 'ja',
           timeZone: 'local',
@@ -225,27 +227,7 @@
           },
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
-
-          events: async function (fetchInfo, successCallback, failureCallback) {
-            try {
-              const response = await fetch("https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec?token=${response.credential}");
-              const events = await response.json();
-
-              const processedEvents = events.map(event => {
-                if (!event.start || !event.end) return null;
-                return {
-                  title: event.title,
-                  start: event.start,
-                  end: event.end
-                };
-              }).filter(event => event !== null);
-
-              successCallback(processedEvents);
-            } catch (err) {
-              console.error("イベント取得エラー:", err);
-              failureCallback(err);
-            }
-          },
+          events: events,
 
           eventDidMount: function (info) {
             if (info.event.title.includes("使用禁止")) {
@@ -278,7 +260,7 @@
         const selectedLocations = checkboxes.map(el => el.value).join(", ");
 
         const data = {
-          token: response.credential,
+          token: idToken,
           name: form.name.value,
           date: form.date.value,
           time: form.time.value,
