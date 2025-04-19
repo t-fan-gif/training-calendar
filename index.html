@@ -228,7 +228,7 @@
 
           events: async function (fetchInfo, successCallback, failureCallback) {
             try {
-              const response = await fetch("https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec");
+              const response = await fetch("https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec?token=${response.credential}");
               const events = await response.json();
 
               const processedEvents = events.map(event => {
@@ -278,6 +278,7 @@
         const selectedLocations = checkboxes.map(el => el.value).join(", ");
 
         const data = {
+          token: response.credential,
           name: form.name.value,
           date: form.date.value,
           time: form.time.value,
