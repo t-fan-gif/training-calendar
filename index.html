@@ -214,6 +214,7 @@
       function showCalendar(events){
       document.getElementById("calendar").style.display = "block"; // カレンダーを表示
         //カレンダー再描写
+      document.addEventListener('DOMContentLoaded', function () {
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
