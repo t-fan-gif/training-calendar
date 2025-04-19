@@ -116,19 +116,19 @@
       }
 
       @media (max-width: 768px) {
- 　　　　 html, body {
-　　　　    font-size: 14px; /* スマホ向けの文字サイズ */
-　　　　  }
+        html, body {
+           font-size: 14px; /* スマホ向けの文字サイズ */
+         }
 
-　　　　  #calendar-title {
-　　　　    font-size: 1.5rem; /* 小さい画面でのタイトルサイズ */
-　　　　  }
+         #calendar-title {
+           font-size: 1.5rem; /* 小さい画面でのタイトルサイズ */
+         }
 
-　　　　  .form-group input,
-　　　　  .form-group select {
-　　　　    font-size: 0.9rem; /* フォームの文字サイズ */
-　　　　  }
-　　　　}
+         .form-group input,
+         .form-group select {
+           font-size: 0.9rem; /* フォームの文字サイズ */
+         }
+       }
 
     </style>
   </head>
@@ -294,7 +294,7 @@
           });
 
           const result = await response.json();
-          if (result.result === "success") {
+          if (result.success) {
             alert("予約完了しました！");
             form.reset();
             calendar.refetchEvents();
@@ -309,6 +309,7 @@
           button.textContent = "送信";
         }
       });
+      }
     </script>
   </body>
 </html>
