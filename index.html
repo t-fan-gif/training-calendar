@@ -146,7 +146,7 @@
     <script>
     function handleCredentialResponse(response) {
       console.log("ログイン成功！");
-      console.log(response);  // ← これでブラウザにトークンの内容が表示される
+      const id_token = response.credential;
     }
     </script>
 
