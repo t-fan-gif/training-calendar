@@ -209,7 +209,8 @@
             url.searchParams.append('token', idToken);
           }
           const res = await fetch(url.toString());
-          const events = await res.json();
+          const result = await res.json();
+          const events = result.events;
 
           if (result.sessionToken) {
             sessionToken = result.sessionToken; // セッション保存
