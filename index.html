@@ -192,6 +192,7 @@
     
     <script>
       let idToken = null; //グローバル変数に保存
+      let sessionToken = null; //グローバル変数に保存
       let calendar; //グローバルに出す
       // Googleログイン成功後の処理
       function handleCredentialResponse(response){
@@ -201,10 +202,20 @@
 
       async function fetchEventsAndShowCalendar(){
         try{
-          const res = await fetch(`https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec?token=${idToken}`)
+          const url = new URL(`https://script.google.com/macros/s/AKfycbzoVFJZaHvbcsevtG4NDGuVSZgCuKi3sve5aiGG_C8Fp5viGTLIMzRNZIKFxjJGOMeANw/exec`);
+          if (sessionToken) {
+            url.searchParams.append('sessionToken', sessionToken);
+          } else if (idToken) {
+            url.searchParams.append('token', idToken);
+          }
+          const res = await fetch(url.toString());
           const events = await res.json();
-          console.log(events); 
-          showCalendar(events); 
+
+          if (result.sessionToken) {
+            sessionToken = result.sessionToken; // セッション保存
+          }
+
+          showCalendar(result.events || result); 
         } catch (err) {
           console.error("イベント取得エラー:", err);
         }
@@ -213,6 +224,12 @@
       //カレンダー表示処理
       function showCalendar(events){
       document.getElementById("calendar").style.display = "block"; // カレンダーを表示
+
+      if (calendar) {
+        calendar.destroy();
+      }
+
+        
         //カレンダー再描写
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
@@ -259,12 +276,20 @@
         const selectedLocations = checkboxes.map(el => el.value).join(", ");
 
         const data = {
-          token: idToken,
           name: form.name.value,
           date: form.date.value,
           time: form.time.value,
           location: selectedLocations
         };
+
+        if (sessionToken) {
+          data.sessionToken = sessionToken;
+        } else if (idToken) {
+          data.token = idToken;
+        } else {
+          alert("ログインしてください！");
+          return;
+        }
 
         button.disabled = true;
         button.textContent = "送信中．．．";
@@ -279,7 +304,7 @@
           if (result.success) {
             alert("予約完了しました！");
             form.reset();
-            calendar.refetchEvents();
+            fetchEventsAndShowCalendar(); // ←カレンダー再取得！
           } else {
             alert("送信に失敗しました。");
           }
