@@ -194,11 +194,6 @@
       let idToken = null; //グローバル変数に保存
       let sessionToken = null; //グローバル変数に保存
       let calendar; //グローバルに出す
-      // Googleログイン成功後の処理
-      function handleCredentialResponse(response){
-        idToken = response.credential;
-        fetchEventsAndShowCalendar();
-      }
 
       // ページ読み込み時に localStorage からトークン復元
       window.addEventListener("load", () => {
@@ -206,6 +201,12 @@
         if (sessionToken) {
           fetchEventsAndShowCalendar();
         }
+        
+      // Googleログイン成功後の処理
+      function handleCredentialResponse(response){
+        idToken = response.credential;
+        fetchEventsAndShowCalendar();
+      }
 
       async function fetchEventsAndShowCalendar(){
         try{
