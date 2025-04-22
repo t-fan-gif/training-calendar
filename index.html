@@ -273,6 +273,16 @@
           slotMaxTime: "21:00:00",
           events: events,
 
+          // 曜日を表示、日付は非表示にする
+          dayHeaderFormat: {
+             weekday: 'short'  // 曜日だけを短縮形で表示 (例: 月, 火, 水)
+          },
+
+          // ヘッダーの日付部分を非表示にする
+          columnHeaderText: function(date) {
+            return date.toLocaleString('ja', { weekday: 'short' });
+          },
+
           eventDidMount: function (info) {
             if (info.event.title.includes("使用禁止")) {
               info.el.style.backgroundColor = 'red';
