@@ -199,6 +199,7 @@
       // Googleログイン成功後の処理
       function handleCredentialResponse(response){
         idToken = response.credential;
+        sessionToken = null;//古いセッショントークンを削除する
         fetchEventsAndShowCalendar();
       }
       
