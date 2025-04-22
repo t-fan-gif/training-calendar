@@ -224,6 +224,11 @@
           }
           const res = await fetch(url.toString());
           const result = await res.json();
+
+          
+    console.log(result);  // レスポンス全体を確認する
+
+          
           const events = result.events;
 
           if (result.sessionToken) {
@@ -231,7 +236,7 @@
             localStorage.setItem("sessionToken", sessionToken);
           }
 
-          showCalendar(events || result); 
+          showCalendar(result.events); 
         } catch (err) {
           console.error("イベント取得エラー:", err);
         }
