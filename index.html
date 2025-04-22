@@ -51,11 +51,11 @@
       }
 
       #calendar {
+        display: block; /* 初期状態からカレンダーを表示 */
         flex-grow: 1;
         max-width: 1000px;
         margin: 20px auto;
         width: 100%;
-        display: block; /* 初期状態からカレンダーを表示 */
       }
 
       #reservationForm {
@@ -121,7 +121,7 @@
          }
 
          #calendar-title {
-           font-size: 1.5rem; /* 小さい画面でのタイトルサイズ */
+           font-size: 1.0rem; /* 小さい画面でのタイトルサイズ */
          }
 
          .form-group input,
@@ -212,6 +212,8 @@
             console.error("イベント取得エラー:", error);
             alert("イベントの取得に失敗しました。");
           });
+        } else{
+          fetchEventsAndShowCalendar();
         }
       });
 
@@ -246,6 +248,7 @@
           showCalendar(result.events || result); 
         } catch (err) {
           console.error("イベント取得エラー:", err);
+          alert("イベントの取得に失敗しました。");
         }
       }
 
