@@ -251,13 +251,10 @@
 
       //カレンダー表示処理
       function showCalendar(events){
-      document.getElementById("calendar").style.display = "block"; // カレンダーを表示
-
       if (calendar) {
         calendar.destroy();
       }
 
-        
         //カレンダー再描写
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
