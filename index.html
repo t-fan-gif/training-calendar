@@ -227,12 +227,17 @@
           const res = await fetch(url.toString());
           const result = await res.json();
 
-          
-    console.log(result);  // レスポンス全体を確認する
+       if (result.error === 'Invalid session') {
+          console.warn("セッショントークン無効。再ログインしてください。");
+          localStorage.removeItem("sessionToken");
+          sessionToken = null;
+          idToken = null;
+          alert("セッション切れです。再度ログインしてください。");
+          return;
+       }
 
           
-          const events = result.events;
-
+          const events = result.events || result;
           if (result.sessionToken) {
             sessionToken = result.sessionToken; // セッショントークン保存
             localStorage.setItem("sessionToken", sessionToken);
