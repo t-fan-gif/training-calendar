@@ -206,7 +206,10 @@
       window.addEventListener("load", () => {
         sessionToken = localStorage.getItem("sessionToken");
         if (sessionToken) {
-          fetchEventsAndShowCalendar();
+          fetchEventsAndShowCalendar().catch(error => {
+            console.error("イベント取得エラー:", error);
+            alert("イベントの取得に失敗しました。");
+          });
         }
       });
 
