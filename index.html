@@ -200,6 +200,7 @@
       function handleCredentialResponse(response){
         idToken = response.credential;
         sessionToken = null;//古いセッショントークンを削除する
+        localStorage.removeItem("sessionToken"); // ローカルストレージのトークンを削除する
         fetchEventsAndShowCalendar();
       }
       
