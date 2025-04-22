@@ -231,7 +231,7 @@
             localStorage.setItem("sessionToken", sessionToken);
           }
 
-          showCalendar(result.events || result); 
+          showCalendar(events || result); 
         } catch (err) {
           console.error("イベント取得エラー:", err);
         }
