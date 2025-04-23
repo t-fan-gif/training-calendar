@@ -228,11 +228,11 @@
 
           <div class="checkbox-group" >
             <label >使用場所</label>
-            <label><input type="radio" name="location[]" value="山形大学"> 山形大学</label>
-            <label><input type="radio" name="location[]" value="あかねヶ丘"> ネッツえがおフィールド</label>
-            <label><input type="radio" name="location[]" value="NDソフトスタジアム"> NDソフトスタジアム</label>
-            <label><input type="radio" name="location[]" value="蔵王坊平"> 蔵王坊平</label>
-            <label><input type="radio" name="otherlocation" value="その他" id="otherLocation"> その他</label>
+            <label><input type="radio" name="location" value="山形大学"> 山形大学</label>
+            <label><input type="radio" name="location" value="あかねヶ丘"> ネッツえがおフィールド</label>
+            <label><input type="radio" name="location" value="NDソフトスタジアム"> NDソフトスタジアム</label>
+            <label><input type="radio" name="location" value="蔵王坊平"> 蔵王坊平</label>
+            <label><input type="radio" name="location" value="その他" id="otherLocation"> その他</label>
                    <input type="text" id="otherLocationText"  placeholder="その他の場所を入力"style="display:none;">
           </div>
       <div style="text-align: right; margin-top: 10px;">
@@ -364,10 +364,8 @@
         const button = form.querySelector("button");
 
         const selectedRadio = form.querySelector('input[name="location"]:checked');
-        const otherLocationCheckbox = form.querySelector('#otherLocation');
         const otherLocationInput = form.querySelector('#otherLocationText');
 
-        
         if (!selectedRadio) {
           alert("使用場所を1つ以上選んでください");
           return;
