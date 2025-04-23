@@ -46,7 +46,7 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 24px;
         font-weight: bolder;
-        background-color: #e6e6fa;
+        background-color: #e0ffff;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -171,7 +171,7 @@
           flex-direction: row;
           width: 100%;
           justify-content: center; /* ボタンを中央揃え */
-          gap: 3px; 
+          gap: 1rem; 
         }
 
         .fc-header-toolbar .fc-toolbar-chunk:last-child {
@@ -183,6 +183,10 @@
           margin-top: 5px;
           color: #000000; 
           white-space: nowrap;
+        }
+        /* ボタンのスタイル調整（必要に応じて） */
+        .fc-header-toolbar .fc-button {
+          margin: 1; /* 余白を取り除く */
         }
       }
 
@@ -329,9 +333,9 @@
           locale: 'ja',
           timeZone: 'local',
         headerToolbar: {
-            left: 'prev,next today,,dayGridMonth,,timeGridWeek,,timeGridDay',
+            left: '',
             center: 'title',
-            right: '',
+            right: 'prev,next today,dayGridMonth,timeGridWeek,timeGridDay',
           },
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
