@@ -131,7 +131,7 @@
 
       #reloadButton:hover {
         background-color: #45a049; /* ボタンにホバーしたときの背景色 */
-      },
+      }
 
       @media (max-width: 768px) {
         html, body {
@@ -173,7 +173,7 @@
           color: #000000; 
           white-space: nowrap;
         }
-      },
+      }
 
     </style>
   </head>
@@ -225,9 +225,14 @@
 
           <div class="checkbox-group" >
             <label >使用場所（複数選択可）</label>
-            <label><input type="checkbox" name="location[]" value="陸上競技場"> 陸上競技場</label>
-            <label><input type="checkbox" name="location[]" value="ウェイトルーム"> ウェイトルーム</label>
-            <label><input type="checkbox" name="location[]" value="その他"> その他</label>
+            <label><input type="checkbox" name="location[]" value="山形大学"> 山形大学</label>
+            <label><input type="checkbox" name="location[]" value="あかねヶ丘"> ネッツえがおフィールド</label>
+            <label><input type="checkbox" name="location[]" value="NDソフトスタジアム"> NDソフトスタジアム</label>
+            <label><input type="checkbox" name="location[]" value="蔵王坊平"> 蔵王坊平</label>
+            <label><input type="checkbox" name="location[]" value="その他" id="otherLocation"> その他</label>
+            <div id="otherLocationInput" style="display: none;">
+              <label for="otherLocationText">その他の場所:</label>
+              <input type="text" id="otherLocationText" name="locationOther" placeholder="その他の場所を入力">
           </div>
       <div style="text-align: right; margin-top: 10px;">
           <button type="submit">送信</button>
