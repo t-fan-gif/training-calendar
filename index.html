@@ -305,7 +305,14 @@
           },
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
-          events: events,
+          events: events.map(event => {
+            return{
+              title: event.title,
+              start: event.start,
+              end: event.end,
+              lpcation: event.location,
+            };
+          });
           // 曜日を表示、日付は非表示にする
           dayHeaderFormat: {
              weekday: 'short'  // 曜日だけを短縮形で表示 (例: 月, 火, 水)
