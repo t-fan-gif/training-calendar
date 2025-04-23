@@ -150,7 +150,7 @@
         
           /* FullCalendarのタイトル部分 */
          .fc-header-toolbar {
-           flex-direction: column;
+           flex-direction: row;
            align-items: stretch;
            text-align: center;
          }              
@@ -164,6 +164,7 @@
 
         .fc-header-toolbar .fc-toolbar-chunk:first-child {
           order: 1; /* 最初にボタンたち */
+          flex-direction: row;
         }
 
         .fc-header-toolbar .fc-toolbar-chunk:last-child {
