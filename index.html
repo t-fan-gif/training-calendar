@@ -135,7 +135,7 @@
 
       @media (max-width: 768px) {
         html, body {
-           font-size: 10px; /* スマホ向けの文字サイズ */
+           font-size: 12px; /* スマホ向けの文字サイズ */
          }
 
          #calendar-title {
@@ -230,9 +230,7 @@
             <label><input type="checkbox" name="location[]" value="NDソフトスタジアム"> NDソフトスタジアム</label>
             <label><input type="checkbox" name="location[]" value="蔵王坊平"> 蔵王坊平</label>
             <label><input type="checkbox" name="location[]" value="その他" id="otherLocation"> その他</label>
-            <div id="otherLocationInput" style="display: none;">
-              <label for="otherLocationText">その他の場所:</label>
-              <input type="text" id="otherLocationText" name="locationOther" placeholder="その他の場所を入力">
+                   <input type="text" id="otherLocationText" name="otherLocationInput" placeholder="その他の場所を入力"style="display:none;">
           </div>
       <div style="text-align: right; margin-top: 10px;">
           <button type="submit">送信</button>
