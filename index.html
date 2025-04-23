@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
     <title>トレーニングカレンダー</title>
 
@@ -42,6 +43,7 @@
       }
 
       #calendar-title {
+        font-family: 'Mochiy Pop One', sans-serif;
         font-size: 24px;
         font-weight: bolder;
         background-color: #ff69b4;
@@ -377,18 +379,21 @@
           const otherValue = otherLocationInput.value.trim();
           //そのほかがチェックされた場合
           if (otherValue === "") {
-              alert("場所を入力してください")
+              alert("場所を入力してください");
               return;
-            } else {
+            }
+            locationValue = otherValue;
+        }else {
               locationValue = selectedRadio.value;
             }
+      
    
         const data = {
           name: form.name.value,
           date: form.date.value,
           time: form.time.value,
           location: locationValue
-        }
+        };
 
         if (sessionToken) {
           data.sessionToken = sessionToken;
