@@ -291,16 +291,17 @@
       </div>
     </form>
 
-    <!-- モーダル (イベント詳細用) -->
-      <div id="eventModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 id="eventModalTitle"></h2>
-          <p id="eventModalDate"></p>         <!-- 日にち -->
-          <p id="eventModalStartTime"></p>    <!-- 開始時間 -->
-          <p id="eventModalEndTime"></p>      <!-- 終了時間 -->
-        </div>
-      </div>
+          <!-- イベント詳細モーダル -->
+          <div id="eventModal" class="modal" style="display: none;">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2 id="eventModalTitle"></h2>
+              <p id="eventModalDescription"></p>
+              <p id="eventModalDate"></p>
+              <p id="eventModalStartTime"></p>
+              <p id="eventModalEndTime"></p>
+            </div>
+          </div>
 
     <!-- ここまで画像描写設定 ---------------------------------------------------->
     <script>
@@ -427,7 +428,7 @@
           eventClick: function(info) {
           // 現在のビューが `timeGridDay` の場合のみ処理を実行
           if (calendar.view.type === 'timeGridDay') {
-            const event = info.events;
+            const event = info.event;
 
               // モーダルの内容を更新
               const modal = document.getElementById('eventModal');
@@ -450,6 +451,11 @@
 
               // モーダルを表示
               modal.style.display = 'block';
+              const closeModal = document.querySelector('.close');
+              closeModal.addEventListener('click', function() {
+                const modal = document.getElementById('eventModal');
+                modal.style.display = 'none';  // モーダルを非表示にする
+              });
               // モーダルの外側（余白）をクリックするとモーダルを閉じる
               window.onclick = function(event) {
                 if (event.target == modal) {
