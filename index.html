@@ -46,7 +46,7 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 24px;
         font-weight: bolder;
-        background-color: #00008b;
+        background-color: #00ced1;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -150,7 +150,8 @@
         
           /* FullCalendarのタイトル部分 */
          .fc-header-toolbar {
-           flex-direction: row;
+           display: flex;
+           flex-direction: column;
            align-items: stretch;
            text-align: center;
          }              
@@ -437,27 +438,28 @@
     </script>
 
       <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const otherRadio = document.getElementById('otherLocation');
-          const otherText = document.getElementById('otherLocationText');
-    
-          // 「その他」のラジオボタンが変更されたときのみにテキストボックスの表示・非表示を制御
-          otherRadio.addEventListener('change', function() {
-            if (otherRadio.checked) {
-              otherText.style.display = 'block'; // その他が選ばれたらテキストボックスを表示
-            } else {
-              otherText.style.display = 'none';  // その他が選ばれなかったら非表示
-              otherText.value = ''; // クリアしておく
-            }
-          });
+      document.addEventListener('DOMContentLoaded', function() {
+        const locationRadios = document.querySelectorAll('input[name="location"]');
+        const otherText = document.getElementById('otherLocationText');
 
-          // 最初にページが読み込まれた時に、選ばれているラジオボタンに応じてテキストボックスの表示・非表示を決定
-          if (otherRadio.checked) {
+        function updateOtherTextVisibility() {
+          const selectedRadio = document.querySelector('input[name="location"]:checked');
+          if (selectedRadio && selectedRadio.id === 'otherLocation') {
             otherText.style.display = 'block';
           } else {
             otherText.style.display = 'none';
+            otherText.value = ''; // テキストもクリア
           }
+        }
+
+        // すべてのラジオボタンに change イベントをつける
+        locationRadios.forEach(radio => {
+          radio.addEventListener('change', updateOtherTextVisibility);
         });
+
+        // ページ読み込み時にも初期状態を設定
+        updateOtherTextVisibility();
+      });
       </script>
 
     
