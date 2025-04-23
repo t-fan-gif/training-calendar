@@ -437,7 +437,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     const otherRadio = document.getElementById('otherLocation');
     const otherText = document.getElementById('otherLocationText');
-    const radios = document.querySelectorAll('input[name="location[]"], input[name="otherlocation"]');
+    const radios = document.querySelectorAll('input[name="location"]);
 
     radios.forEach(radio => {
       radio.addEventListener('change', function() {
