@@ -44,7 +44,7 @@
       #calendar-title {
         font-size: 24px;
         font-weight: bolder;
-        background-color: #008000;
+        background-color: #87cefa;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -363,18 +363,36 @@
         const button = form.querySelector("button");
 
         const checkboxes = [...form.querySelectorAll('input[name="location[]"]:checked')];
+        const otherLocationCheckbox = form.querySelector('#otherLocation');
+        const otherLocationInput = form.querySelector('#otherLocationText');
+
+        
         if (checkboxes.length === 0) {
           alert("使用場所を1つ以上選んでください");
           return;
         }
 
-        const selectedLocations = checkboxes.map(el => el.value).join(", ");
+        let selectedLocations = [];
 
+        for (const checkbox of checkboxes) {
+          if (checkbox === otherLocationCheckbox) {
+            //そのほかがチェックされた場合
+            if (otherLocationInput.value.trim() === "") {
+              alert("場所を入力してください")
+              return;
+            } else {
+              selectedLocations.push(otherLocationInput.value.trim());
+            }
+          } else {
+            selectedLocations.push(checkbox.value);
+          }
+        }
+          
         const data = {
           name: form.name.value,
           date: form.date.value,
           time: form.time.value,
-          location: selectedLocations
+          location: selectedLocations.join(", ")
         };
 
         if (sessionToken) {
