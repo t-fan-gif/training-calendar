@@ -296,8 +296,9 @@
         <div class="modal-content">
           <span class="close">&times;</span>
           <h2 id="eventModalTitle"></h2>
-          <p id="eventModalDate"></p>
-          <p id="eventModalDescription"></p>
+          <p id="eventModalDate"></p>         <!-- 日にち -->
+          <p id="eventModalStartTime"></p>    <!-- 開始時間 -->
+          <p id="eventModalEndTime"></p>      <!-- 終了時間 -->
         </div>
       </div>
 
@@ -433,10 +434,19 @@
               const modalTitle = document.getElementById('eventModalTitle');
               const modalDescription = document.getElementById('eventModalDescription');
               const modalDate = document.getElementById('eventModalDate');
+              const modalStartTime = document.getElementById('eventModalStartTime');
+              const modalEndTime = document.getElementById('eventModalEndTime');
         
               modalTitle.innerHTML = event.title;
               modalDescription.innerHTML = event.extendedProps.description || "詳細情報はありません";
               modalDate.innerHTML = `日時: ${event.start.toLocaleString()}`;
+
+              // 日にち（年月日だけ）
+              modalDate.innerHTML = `日付: ${event.start.toLocaleDateString()}`;
+              // 開始時間（時刻だけ）
+              modalStartTime.innerHTML = `開始: ${event.start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false })}`;
+              // 終了時間（時刻だけ）
+              modalEndTime.innerHTML = `終了: ${event.end.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false })}`;
 
               // モーダルを表示
               modal.style.display = 'block';
