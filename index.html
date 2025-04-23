@@ -328,8 +328,6 @@
       if (calendar) {
         calendar.destroy();
       }
-
-        //カレンダー再描写
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
@@ -372,6 +370,10 @@
               const titleEl = info.el.querySelector('.fc-event-title');
               if (titleEl) titleEl.style.color = 'black';
             }
+          },
+          // 日付クリック時にその日を 'dayGridDay' ビューで表示
+          dateClick: function(info) {
+            calendar.changeView('timeGridDay', info.dateStr);  // クリックした日付に切り替え
           }
         });
 
