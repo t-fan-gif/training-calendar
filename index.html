@@ -115,6 +115,24 @@
         overflow-wrap: break-word;
       }
 
+      #reloadButton {
+        position: fixed;  /* 画面上で固定位置に配置 */
+        top: 10px;        /* 上から10pxの位置 */
+        right: 10px;      /* 右から10pxの位置 */
+        background-color: #4CAF50; /* ボタンの背景色 */
+        color: white;     /* ボタンの文字色 */
+        padding: 10px 20px; /* ボタン内の余白 */
+        border: none;     /* ボーダーを削除 */
+        border-radius: 5px; /* ボタンの角を丸く */
+        font-size: 14px;   /* 文字サイズ */
+        cursor: pointer;  /* カーソルが指差しに */
+        z-index: 1000;    /* 他の要素よりも前面に表示 */
+      }
+
+      #reloadButton:hover {
+        background-color: #45a049; /* ボタンにホバーしたときの背景色 */
+      }
+
       @media (max-width: 768px) {
         html, body {
            font-size: 14px; /* スマホ向けの文字サイズ */
@@ -160,6 +178,8 @@
     </style>
   </head>
   <body>
+    <!-- ページの更新ボタン -->
+    <button id="reloadButton" onclick="reloadPage()">ページを更新</button>
 
     <!-- ログインボタンを追加 -->
     <div id="g_id_onload"
@@ -386,6 +406,10 @@
           button.textContent = "送信";
         }
      });
+      // ページをリロードする関数
+      function reloadPage() {
+        location.reload(); // ページをリロード
+      }
     </script>
   </body>
 </html>
