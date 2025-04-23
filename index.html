@@ -19,16 +19,12 @@
     <!-- モバイルの見た目調整 -->
     <meta name="apple-mobile-web-app-title" content="トレーニングカレンダー">
     <meta name="theme-color" content="#ffffff">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
 
     <!-- FullCalendar CSS & JS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@6.1.8/index.global.min.js"></script>
-
     
     <!-- Google Login Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -48,7 +44,7 @@
       #calendar-title {
         font-size: 24px;
         font-weight: bolder;
-        background-color: #87aee0;
+        background-color: #7fff00;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -143,9 +139,8 @@
           order: 1; /* 最初にボタンたち */
           display: flex;
           justify-content: center;
-          flex-wrap: nowrap;
-          gap: 5px;
-          margin-bottom: 8px;
+          gap: 10px;
+          margin-bottom: 10px;
         }
 
         .fc-header-toolbar .fc-toolbar-chunk:last-child {
@@ -175,9 +170,7 @@
     </div>
     
     <!-- タイトル-->
-    <div id="calendar-title">academyトレーニングカレンダー
-      <button id="toggleViewBtn" style="float: right; background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">縦型表示</button>
-    </div>
+    <div id="calendar-title">academyトレーニングカレンダー</div>
     <div id="calendar"></div>
 
     <!-- 入力フォーム -->
@@ -226,13 +219,6 @@
       let idToken = null; //グローバル変数に保存
       let sessionToken = null; //グローバル変数に保存
       let calendar; //グローバルに出す
-      let currentView = 'dayGridMonth'; // 最初は普通のカレンダー
-
-      // ページが完全に読み込まれてからカレンダーを表示
-        window.addEventListener('DOMContentLoaded', function () {
-          fetchEventsAndShowCalendar();
-        });
-
       
       // Googleログイン成功後の処理
       function handleCredentialResponse(response){
@@ -258,7 +244,7 @@
 
       async function fetchEventsAndShowCalendar(){
         try{
-          const url = new URL(`https://script.google.com/macros/s/AKfycbwKOZHWkGSUXEWMy4iUKwzmqls9hxcLqwpy0zRQtIG0WyHn7EIkC31CZNNYcHYhzB0mWQ/exec`);
+          const url = new URL(https://script.google.com/macros/s/AKfycbwKOZHWkGSUXEWMy4iUKwzmqls9hxcLqwpy0zRQtIG0WyHn7EIkC31CZNNYcHYhzB0mWQ/exec);
           if (sessionToken) {
             url.searchParams.append('sessionToken', sessionToken);
           } else if (idToken) {
@@ -299,29 +285,23 @@
         //カレンダー再描写
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [FullCalendar.dayGridPlugin, FullCalendar.timeGridPlugin, FullCalendar.listPlugin],
-          initialView: currentView,
+          initialView: 'dayGridMonth',
           locale: 'ja',
           timeZone: 'local',
           headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
           },
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
-          events: events.map(event => {
-            return{
-              title: event.title,
-              start: event.start,
-              end: event.end,
-              location: event.location,
-            }
-          }),
+          events: events,
+
           // 曜日を表示、日付は非表示にする
           dayHeaderFormat: {
              weekday: 'short'  // 曜日だけを短縮形で表示 (例: 月, 火, 水)
           },
+
           // ヘッダーの日付部分を非表示にする
           columnHeaderText: function(date) {
             return date.toLocaleString('ja', { weekday: 'short' });
@@ -377,7 +357,7 @@
         button.textContent = "送信中．．．";
 
         try {
-          const response = await fetch(`https://script.google.com/macros/s/AKfycbwuweOltFH_hTPviY0-yHK7ItlSfpRFfsw2poqd1FNMCdvMQzaYNhXxlsBmsyBsPeZACw/exec`, {
+          const response = await fetch(https://script.google.com/macros/s/AKfycbwuweOltFH_hTPviY0-yHK7ItlSfpRFfsw2poqd1FNMCdvMQzaYNhXxlsBmsyBsPeZACw/exec, {
             method: "POST",
             body: JSON.stringify(data)
           });
@@ -398,19 +378,3 @@
           button.textContent = "送信";
         }
       });
-
-      document.getElementById('toggleViewBtn').addEventListener('click', function() {
-        if (currentView === 'dayGridMonth') {
-          currentView = 'listMonth'; // 縦型リストに変更
-          this.textContent = '月カレンダー'; // ボタンの表示も変える
-        } else {
-          currentView = 'dayGridMonth'; // 月カレンダーに戻す
-          this.textContent = '縦型表示'; // ボタンの表示を戻す
-        }
-        calendar.changeView(currentView); // ★ここだけでビュー切替！
-      });
-
-      
-    </script>
-  </body>
-</html>
