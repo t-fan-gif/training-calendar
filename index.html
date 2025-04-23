@@ -25,6 +25,8 @@
     <!-- FullCalendar CSS & JS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/index.global.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@6.1.8/index.global.min.js"></script>
 
     
@@ -46,7 +48,7 @@
       #calendar-title {
         font-size: 24px;
         font-weight: bolder;
-        background-color: #008b8b;
+        background-color: #00ced1;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -293,7 +295,7 @@
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
           plugins: [FullCalendar.dayGridPlugin, FullCalendar.timeGridPlugin, FullCalendar.listPlugin],
-          initialView: 'currentView',
+          initialView: currentView,
           locale: 'ja',
           timeZone: 'local',
           headerToolbar: {
@@ -393,7 +395,7 @@
           currentView = 'dayGridMonth'; // 月カレンダーに戻す
           this.textContent = '縦型表示'; // ボタンの表示を戻す
         }
-        showCalendar(calendar.getEvents().map(event => event.toPlainObject())); // イベントデータで再描画
+        calendar.changeView(currentView); // ★ここだけでビュー切替！
       });
 
 
