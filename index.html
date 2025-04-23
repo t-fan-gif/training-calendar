@@ -184,9 +184,13 @@
           color: #000000; 
           white-space: nowrap;
         }
-        /* ボタンのスタイル調整（必要に応じて） */
-        .fc-header-toolbar .fc-button {
-          margin: 1; /* 余白を取り除く */
+        
+        .fc-button-group > .fc-button {
+          margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
+        }
+
+        .fc-button-group > .fc-button:last-child {
+          margin-right: 0; /* 最後のボタンだけ余分なマージンを消す */
         }
       }
 
