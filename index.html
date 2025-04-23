@@ -19,7 +19,7 @@
     <!-- モバイルの見た目調整 -->
     <meta name="apple-mobile-web-app-title" content="トレーニングカレンダー">
     <meta name="theme-color" content="#ffffff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
 
     <!-- FullCalendar CSS & JS -->
@@ -163,16 +163,6 @@
   </head>
   <body>
 
-
-    <script>
-    console.log(FullCalendar.dayGridPlugin);
-    </script>
-
-
-
-
-    
-
     <!-- ログインボタンを追加 -->
     <div id="g_id_onload"
       data-client_id="94530051270-rgag268i7t9bops8o4fupnd04051a7vq.apps.googleusercontent.com"
@@ -237,6 +227,11 @@
       let sessionToken = null; //グローバル変数に保存
       let calendar; //グローバルに出す
       let currentView = 'dayGridMonth'; // 最初は普通のカレンダー
+
+      // ページが完全に読み込まれてからカレンダーを表示
+        window.addEventListener('DOMContentLoaded', function () {
+          fetchEventsAndShowCalendar();
+        });
 
       
       // Googleログイン成功後の処理
