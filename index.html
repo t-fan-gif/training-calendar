@@ -44,7 +44,7 @@
       #calendar-title {
         font-size: 24px;
         font-weight: bolder;
-        background-color: #7fff00;
+        background-color: #ffff00;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -170,7 +170,9 @@
     </div>
     
     <!-- タイトル-->
-    <div id="calendar-title">academyトレーニングカレンダー</div>
+    <div id="calendar-title">academyトレーニングカレンダー
+      <button id="toggleViewBtn" style="float: right; background: #4CAF50; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">縦型表示</button>
+    </div>
     <div id="calendar"></div>
 
     <!-- 入力フォーム -->
@@ -219,6 +221,8 @@
       let idToken = null; //グローバル変数に保存
       let sessionToken = null; //グローバル変数に保存
       let calendar; //グローバルに出す
+      let currentView = 'dayGridMonth'; // 最初は普通のカレンダー
+
       
       // Googleログイン成功後の処理
       function handleCredentialResponse(response){
@@ -285,7 +289,7 @@
         //カレンダー再描写
         const calendarEl = document.getElementById('calendar');
         calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
+          initialView: 'currentView',
           locale: 'ja',
           timeZone: 'local',
           headerToolbar: {
@@ -296,12 +300,10 @@
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
           events: events,
-
           // 曜日を表示、日付は非表示にする
           dayHeaderFormat: {
              weekday: 'short'  // 曜日だけを短縮形で表示 (例: 月, 火, 水)
           },
-
           // ヘッダーの日付部分を非表示にする
           columnHeaderText: function(date) {
             return date.toLocaleString('ja', { weekday: 'short' });
@@ -378,7 +380,19 @@
           button.textContent = "送信";
         }
       });
-      
+
+      document.getElementById('toggleViewBtn').addEventListener('click', function() {
+        if (currentView === 'dayGridMonth') {
+          currentView = 'listMonth'; // 縦型リストに変更
+          this.textContent = '月カレンダー'; // ボタンの表示も変える
+        } else {
+          currentView = 'dayGridMonth'; // 月カレンダーに戻す
+          this.textContent = '縦型表示'; // ボタンの表示を戻す
+        }
+        showCalendar(calendar.getEvents().map(event => event.toPlainObject())); // イベントデータで再描画
+      });
+
+
     </script>
   </body>
 </html>
