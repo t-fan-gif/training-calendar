@@ -134,6 +134,10 @@
         background-color: #45a049; /* ボタンにホバーしたときの背景色 */
       }
 
+       .fc-button-group > .fc-button {
+          margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
+      }
+
       @media (max-width: 768px) {
         html, body {
            font-size: 12px; /* スマホ向けの文字サイズ */
@@ -186,10 +190,6 @@
         
         .fc-button-group > .fc-button {
           margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
-        }
-
-        .fc-button-group > .fc-button:last-child {
-          margin-right: 0; /* 最後のボタンだけ余分なマージンを消す */
         }
       }
 
