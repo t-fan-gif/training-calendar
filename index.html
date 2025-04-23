@@ -434,5 +434,26 @@
         location.reload(); // ページをリロード
       }
     </script>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const otherRadio = document.getElementById('otherLocation');
+    const otherText = document.getElementById('otherLocationText');
+    const radios = document.querySelectorAll('input[name="location[]"], input[name="otherlocation"]');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (otherRadio.checked) {
+          otherText.style.display = 'block';
+        } else {
+          otherText.style.display = 'none';
+          otherText.value = ''; // クリアしておくと親切
+        }
+      });
+    });
+  });
+</script>
+
+    
   </body>
 </html>
