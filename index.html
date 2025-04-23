@@ -244,7 +244,7 @@
 
       async function fetchEventsAndShowCalendar(){
         try{
-          const url = new URL(https://script.google.com/macros/s/AKfycbwKOZHWkGSUXEWMy4iUKwzmqls9hxcLqwpy0zRQtIG0WyHn7EIkC31CZNNYcHYhzB0mWQ/exec);
+          const url = new URL(`https://script.google.com/macros/s/AKfycbwKOZHWkGSUXEWMy4iUKwzmqls9hxcLqwpy0zRQtIG0WyHn7EIkC31CZNNYcHYhzB0mWQ/exec`);
           if (sessionToken) {
             url.searchParams.append('sessionToken', sessionToken);
           } else if (idToken) {
@@ -357,7 +357,7 @@
         button.textContent = "送信中．．．";
 
         try {
-          const response = await fetch(https://script.google.com/macros/s/AKfycbwuweOltFH_hTPviY0-yHK7ItlSfpRFfsw2poqd1FNMCdvMQzaYNhXxlsBmsyBsPeZACw/exec, {
+          const response = await fetch(`https://script.google.com/macros/s/AKfycbwuweOltFH_hTPviY0-yHK7ItlSfpRFfsw2poqd1FNMCdvMQzaYNhXxlsBmsyBsPeZACw/exec`, {
             method: "POST",
             body: JSON.stringify(data)
           });
@@ -377,4 +377,4 @@
           button.disabled = false;
           button.textContent = "送信";
         }
-      });
+     });
