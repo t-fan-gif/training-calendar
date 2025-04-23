@@ -286,6 +286,12 @@
           }
           const res = await fetch(url.toString());
           const result = await res.json();
+          
+        // エラーメッセージが「アクセス拒否」の場合
+          if (result.result === 'error' && result.message === 'アクセス拒否') {
+            alert('タイムアウトしました。ログインしてください。');
+            return; // 処理を中止
+          }
 
        if (result.error === 'Invalid session') {
           console.warn("セッショントークン無効。再ログインしてください。");
