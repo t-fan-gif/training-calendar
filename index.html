@@ -283,8 +283,14 @@
             <label><input type="radio" name="location" value="その他" id="otherLocation"> その他</label>
                    <input type="text" id="otherLocationText"  placeholder="その他の場所を入力"style="display:none;">
           </div>
-      <div style="text-align: right; margin-top: 10px;">
-          <button type="submit">送信</button>
+          <!-- メモ欄の追加 -->
+          <div class="form-group">
+            <label for="memo">メモ</label>
+            <textarea id="memo" name="memo" rows="4" placeholder="必要に応じてメモを記入してください"></textarea>
+          </div>
+        <div style="text-align: right; margin-top: 10px;">
+            <button type="submit">送信</button>
+        </div>
       </div>
     </form>
 
