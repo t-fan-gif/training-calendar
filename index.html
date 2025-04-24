@@ -571,6 +571,17 @@
       });   
       </script>
       <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const today = new Date();
+          const yyyy = today.getFullYear();
+          const mm = String(today.getMonth() + 1).padStart(2, '0'); // 月を2桁に
+          const dd = String(today.getDate()).padStart(2, '0');      // 日を2桁に
+          const formattedToday = `${yyyy}-${mm}-${dd}`;
+
+          document.getElementById('date').value = formattedToday;
+        });
+      </script>
+      <script>
       document.addEventListener('DOMContentLoaded', function() {
         const locationRadios = document.querySelectorAll('input[name="location"]');
         const otherText = document.getElementById('otherLocationText');
