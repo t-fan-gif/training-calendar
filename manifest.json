@@ -1,5 +1,5 @@
 {
-  "name": "グラウンド予約",
+  "name": "YAAカレンダー",
   "short_name": "YAAカレンダー",
   "start_url": "./index.html",
   "display": "standalone",
