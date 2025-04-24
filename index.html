@@ -45,7 +45,7 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 24px;
         font-weight: bolder;
-        background-color: #f2a0ea;
+        background-color: #b9a0f2;
         box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
@@ -330,7 +330,7 @@
 
       async function fetchEventsAndShowCalendar(){
         try{
-          const url = new URL(`https://script.google.com/macros/s/AKfycby-8sC_4wTmmnfzOOjaitlrUNKg8pt4z5HvPRVO6h6C_PPRdzYxWNEWLqZed6lc7Ye6nQ/exec`);
+          const url = new URL(`https://script.google.com/macros/s/AKfycbzbAl_FOnFFeNUSW5Wz86boXUn3NxPjINpSraVqIzbtViSx_6jw1gqUfcGFyY7KYSlNxA/exec`);
           if (sessionToken) {
             url.searchParams.append('sessionToken', sessionToken);
           } else if (idToken) {
