@@ -423,6 +423,8 @@
           dateClick: function(info) {
             calendar.changeView('timeGridDay', info.dateStr);  // クリックした日付に切り替え
           },
+
+          
           
           // イベントクリック時にそのイベントの開催日に 'timeGridDay' ビューで表示
           eventClick: function(info) {
@@ -463,7 +465,20 @@
                 }
               };
             }
-          },
+          },  
+
+          // イベントが入力されている場合にその上をクリックした際にその日に遷移
+          eventDidMount: function(info) {
+            if (info.event.title.includes("使用禁止")) {
+              info.el.style.backgroundColor = 'red';
+              const titleEl = info.el.querySelector('.fc-event-title');
+              if (titleEl) titleEl.style.color = 'white';
+            } else {
+              info.el.style.backgroundColor = '#FFCC00';
+              const titleEl = info.el.querySelector('.fc-event-title');
+              if (titleEl) titleEl.style.color = 'black';
+            }
+          }
         });
 
         calendar.render();
