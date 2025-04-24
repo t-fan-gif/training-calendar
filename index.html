@@ -428,10 +428,11 @@
           
           // イベントクリック時にそのイベントの開催日に 'timeGridDay' ビューで表示
           eventClick: function(info) {
-          // 現在のビューが `timeGridDay` の場合のみ処理を実行
-          if (calendar.view.type === 'timeGridDay') {
             const event = info.event;
-
+          // 現在のビューが `timeGridDay` の場合のみ処理を実行
+          if (calendar.view.type !== 'timeGridDay') {
+            calendar.changeView('timeGridDay', event.start)
+          } else {
               // モーダルの内容を更新
               const modal = document.getElementById('eventModal');
               const modalTitle = document.getElementById('eventModalTitle');
@@ -465,20 +466,9 @@
                 }
               };
             }
+            // デフォルトの動作（ナビゲーションなど）を無効化
+            info.jsEvent.preventDefault();
           },  
-
-          // イベントが入力されている場合にその上をクリックした際にその日に遷移
-          eventDidMount: function(info) {
-            if (info.event.title.includes("使用禁止")) {
-              info.el.style.backgroundColor = 'red';
-              const titleEl = info.el.querySelector('.fc-event-title');
-              if (titleEl) titleEl.style.color = 'white';
-            } else {
-              info.el.style.backgroundColor = '#FFCC00';
-              const titleEl = info.el.querySelector('.fc-event-title');
-              if (titleEl) titleEl.style.color = 'black';
-            }
-          }
         });
 
         calendar.render();
