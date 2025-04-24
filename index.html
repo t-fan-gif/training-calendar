@@ -330,7 +330,7 @@
 
       async function fetchEventsAndShowCalendar(){
         try{
-          const url = new URL(`https://script.google.com/macros/s/AKfycbwKOZHWkGSUXEWMy4iUKwzmqls9hxcLqwpy0zRQtIG0WyHn7EIkC31CZNNYcHYhzB0mWQ/exec`);
+          const url = new URL(`https://script.google.com/macros/s/AKfycbwtCGojJ2E2rUIBld4otcm5M5o2VZFzxtSzj2V4cjmVMFAKNxOi60PFqu_5QNKBorXVHg/exec`);
           if (sessionToken) {
             url.searchParams.append('sessionToken', sessionToken);
           } else if (idToken) {
@@ -521,7 +521,7 @@
         button.textContent = "送信中．．．";
 
         try {
-          const response = await fetch(`https://script.google.com/macros/s/AKfycby32BQzthiZASTVumFRIopnZIOHhbnHJDW_bOJthpiRr5wNSmd_4zINDe-zCAaLAeayNw/exec`, {
+          const response = await fetch(`https://script.google.com/macros/s/AKfycbyW_wjZ9rWtr1FxooW1Sxw77Y93YrI0xYEaKD6YKeCWDjyhbwe3y-0P_Cen-6o5787Hkg/exec`, {
             method: "POST",
             body: JSON.stringify(data),
           });
