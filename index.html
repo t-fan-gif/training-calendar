@@ -265,17 +265,14 @@
         </div>
 
         <div class="form-group">
-          <label for="time">時間帯</label>
-          <select name="time" id="time" required>
-            <option value="">-- 時間を選択 --</option>
-            <option value="08:00-10:00">8:00〜10:00</option>
-            <option value="10:00-12:00">10:00〜12:00</option>
-            <option value="12:00-14:00">12:00〜14:00</option>
-            <option value="14:00-16:00">14:00〜16:00</option>
-            <option value="16:00-18:00">16:00〜18:00</option>
-            <option value="18:00-20:00">18:00〜20:00</option>
-          </select>
+          <label for="startTime">開始時間:</label>
+          <input type="time" id="startTime" name="startTime">
         </div>
+
+        <div class="form-group">
+          <label for="endTime">終了時間:</label>
+          <input type="time" id="endTime" name="endTime">
+        </div> 
 
           <div class="checkbox-group" >
             <label >使用場所</label>
@@ -550,6 +547,28 @@
       }
     </script>
 
+      //終了時間を２時間後に設定する関数
+      <script>
+      document.getElementById('startTime').addEventListener('change', function() {
+        const startTime = this.value;
+
+        if (startTime) {
+          const [hour, minute] = startTime.split(':').map(Number);
+          let endHour = hour + 2;
+          let endMinute = minute;
+
+          // 24時間制オーバー対応
+          if (endHour >= 24) {
+            endHour -= 24;
+          }
+
+          // 時分を2桁ゼロ埋めで整形
+          const formattedEndHour = String(endHour).padStart(2, '0');
+          const formattedEndMinute = String(endMinute).padStart(2, '0');
+
+          document.getElementById('endTime').value = `${formattedEndHour}:${formattedEndMinute}`;
+        }
+      });    
       <script>
       document.addEventListener('DOMContentLoaded', function() {
         const locationRadios = document.querySelectorAll('input[name="location"]');
