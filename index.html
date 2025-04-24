@@ -503,7 +503,8 @@
         const data = {
           name: form.name.value,
           date: form.date.value,
-          time: form.time.value,
+          startTime: form.startTime.value
+          endTime: form.endTime.value,
           location: locationValue
         };
 
@@ -522,7 +523,10 @@
         try {
           const response = await fetch(`https://script.google.com/macros/s/AKfycbyq8CyHiSHl9q1WsBOMoJOLfUtZXqn7pfWg8QDKXb31J06KmYGukr8qMk2OIS97WGNk4g/exec`, {
             method: "POST",
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json"
+            }
           });
 
           const result = await response.json();
