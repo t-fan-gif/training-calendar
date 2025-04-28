@@ -138,6 +138,22 @@
           margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
       }
 
+      .toggleButton {
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+
+      .toggleButton.selected {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .toggleButton:hover {
+        background-color: #ddd;
+      }
+
       @media (max-width: 768px) {
         html, body {
            font-size: 12px; /* スマホ向けの文字サイズ */
@@ -283,6 +299,7 @@
         <div class="form-group">
           <label for="startTime">開始時間:</label>
           <input type="time" id="startTime" name="startTime" step="1800" value="08:00">
+          <button type="botton" id="fullDay" class="togglebutton" style="margin-left: 10px;">1日</button>
         </div>
 
         <div class="form-group">
@@ -502,13 +519,42 @@
         const selectedRadio = form.querySelector('input[name="location"]:checked');
         const otherLocationInput = form.querySelector('#otherLocationText');
 
+        //一日ボタンの設定
+        document.addEventListener('DOMContentLoaded', function () {
+        const eventTypeSelect = document.getElementById('eventType');
+        const nameInput = document.getElementById('name');
+        const meetNameInput = document.getElementById('meetName');
+        const fullDay = document.getElementById('fullDay');
+        const startTimeInput = document.getElementById('startTime');
+        const endTimeInput = document.getElementById('endTime');
+        function updateInputs() {
+          const selectedValue = eventTypeSelect.value;
+          if (selectedValue === '練習') {
+            nameInput.disabled = false;
+            meetNameInput.disabled = true;
+          } else if (selectedValue === '大会') {
+            nameInput.disabled = false;
+            meetNameInput.disabled = false;
+          } else if (selectedValue === '使用不可') {
+            nameInput.disabled = true;
+            meetNameInput.disabled = true;
+          }
+        }
+        eventTypeSelect.addEventListener('change', updateInputs);
+       // 1日ボタンが選択されている場合、startTimeとendTimeを強制的に変更
+          if (fullDay.classList.contains('selected')) {
+            form.startTime.value = '00:00';
+            form.endTime.value = '23:59';
+          }
+        // 最初にも状態セット
+        updateInputs();
+      });
+    //locationが選択されているかチェック・・・・・・・・・・・・・・・・・・・
         if (!selectedRadio) {
           alert("使用場所を1つ以上選んでください");
           return;
         }
-
         let locationValue = "";
-
         if (selectedRadio.id === "otherLocation") {
           const otherValue = otherLocationInput.value.trim();
           //そのほかがチェックされた場合
@@ -521,13 +567,16 @@
               locationValue = selectedRadio.value;
             }
       
-   
+   //データ作成・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・
         const data = {
+          eventType: form.eventType.value,
           name: form.name.value,
           date: form.date.value,
           startTime: form.startTime.value,
           endTime: form.endTime.value,
-          location: locationValue
+          location: locationValue,
+          meetName: form.meetName,
+          memo: form.memo
         };
 
         if (sessionToken) {
@@ -570,34 +619,6 @@
       }
     </script>
 
- 
-      <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const eventTypeSelect = document.getElementById('eventType');
-        const nameInput = document.getElementById('name');
-        const meetNameInput = document.getElementById('meetName');
-
-        function updateInputs() {
-          const selectedValue = eventTypeSelect.value;
-
-          if (selectedValue === '練習') {
-            nameInput.disabled = false;
-            meetNameInput.disabled = true;
-          } else if (selectedValue === '大会') {
-            nameInput.disabled = false;
-            meetNameInput.disabled = false;
-          } else if (selectedValue === '使用不可') {
-            nameInput.disabled = true;
-            meetNameInput.disabled = true;
-          }
-        }
-
-        eventTypeSelect.addEventListener('change', updateInputs);
-
-        // 最初にも状態セット
-        updateInputs();
-      });
-      </script>
 
       <!-- //終了時間を２時間後に設定する関数 -->
       <script>
