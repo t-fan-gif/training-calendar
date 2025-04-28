@@ -269,7 +269,7 @@
             <label for="name">名前</label>
             <input type="text" id="name" name="name" placeholder="名前" required />
           </div>
-          <div style="flex: 2;">
+          <div style="flex: 1;">
             <label for="tournamentName">大会名</label>
             <input type="text" id="tournamentName" name="tournamentName" placeholder="大会名" required />
           </div>
@@ -607,6 +607,18 @@
         }
       });
     </script>
+
+      <script>
+        // ラジオボタンが選択されている状態を解除できるようにする
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+          radio.addEventListener('click', function() {
+            // クリックしたラジオボタンがすでに選択されている場合は解除
+            if (this.checked) {
+              this.checked = false;
+            }
+          });
+        });
+      </script>
 
       <!-- //終了時間を２時間後に設定する関数 -->
       <script>
