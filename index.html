@@ -270,8 +270,8 @@
             <input type="text" id="name" name="name" placeholder="名前" required />
           </div>
           <div style="flex: 2;">
-            <label for="meetname">大会名</label>
-            <input type="text" id="meetname" name="meetname" placeholder="大会名" required />
+            <label for="meetName">大会名</label>
+            <input type="text" id="meetName" name="meetName" placeholder="大会名" required />
           </div>
         </div>
 
@@ -575,20 +575,20 @@
       document.addEventListener('DOMContentLoaded', function () {
         const eventTypeSelect = document.getElementById('eventType');
         const nameInput = document.getElementById('name');
-        const tournamentNameInput = document.getElementById('tournamentName');
+        const tournamentNameInput = document.getElementById('meetName');
 
         function updateInputs() {
           const selectedValue = eventTypeSelect.value;
 
           if (selectedValue === '練習') {
             nameInput.disabled = false;
-            tournamentNameInput.disabled = true;
+            meetNameInput.disabled = true;
           } else if (selectedValue === '大会') {
             nameInput.disabled = false;
-            tournamentNameInput.disabled = false;
+            meetNameInput.disabled = false;
           } else if (selectedValue === '使用不可') {
             nameInput.disabled = true;
-            tournamentNameInput.disabled = true;
+            meetNameInput.disabled = true;
           }
         }
 
