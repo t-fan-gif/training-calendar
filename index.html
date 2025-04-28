@@ -568,30 +568,15 @@
     </script>
 
  
-    <script> //種別入力対応用
+      <script>
+      document.addEventListener('DOMContentLoaded', function () {
         const eventTypeSelect = document.getElementById('eventType');
         const nameInput = document.getElementById('name');
         const tournamentNameInput = document.getElementById('tournamentName');
-      
-        // ドロップダウン変更時の動き
-        eventTypeSelect.addEventListener('change', function () {
-          const selectedValue = this.value;
-      
-          if (selectedValue === '練習') {
-            nameInput.disabled = false;
-            tournamentNameInput.disabled = true;
-          } else if (selectedValue === '大会') {
-            nameInput.disabled = false;
-            tournamentNameInput.disabled = false;
-          } else if (selectedValue === '使用不可') {
-            nameInput.disabled = true;
-            tournamentNameInput.disabled = true;
-          }
-        });
-      
-        // ページ読み込み時にも一応セットしておく（リロード対策）
-        window.addEventListener('DOMContentLoaded', () => {
+
+        function updateInputs() {
           const selectedValue = eventTypeSelect.value;
+
           if (selectedValue === '練習') {
             nameInput.disabled = false;
             tournamentNameInput.disabled = true;
@@ -602,7 +587,13 @@
             nameInput.disabled = true;
             tournamentNameInput.disabled = true;
           }
-        });
+        }
+
+        eventTypeSelect.addEventListener('change', updateInputs);
+
+        // 最初にも状態セット
+        updateInputs();
+      });
       </script>
 
       <!-- //終了時間を２時間後に設定する関数 -->
