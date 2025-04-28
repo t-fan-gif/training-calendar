@@ -608,18 +608,6 @@
       });
     </script>
 
-      <script>
-        // ラジオボタンが選択されている状態を解除できるようにする
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-          radio.addEventListener('click', function() {
-            // クリックしたラジオボタンがすでに選択されている場合は解除
-            if (this.checked) {
-              this.checked = false;
-            }
-          });
-        });
-      </script>
-
       <!-- //終了時間を２時間後に設定する関数 -->
       <script>
       document.getElementById('startTime').addEventListener('change', function() {
