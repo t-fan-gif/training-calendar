@@ -255,9 +255,17 @@
       <h2>入力フォーム</h2>
       <div class="form-grid">
         <div class="form-group">
+          <label for="eventType">種別を選択</label>
+          <select id="eventType" name="eventType" required>
+            <option value="練習"selected>練習</option>
+            <option value="大会">大会</option>
+            <option value="使用不可">使用不可</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="name">名前（イベント名）</label>
           <input type="text" id="name" name="name" placeholder="名前" required />
-      </div>
+        </div>
 
         <div class="form-group">
           <label for="date">日付</label>
