@@ -433,13 +433,16 @@
           },
 
           eventDidMount: function (info) {
-            if (info.event.title.includes("使用禁止")) {
+            const eventType = info.event.extendedProps.eventType;
+            const titleEl = info.el.querySelector('.fc-event-title');
+            if (eventType === "使用不可") {
               info.el.style.backgroundColor = 'red';
-              const titleEl = info.el.querySelector('.fc-event-title');
               if (titleEl) titleEl.style.color = 'white';
-            } else {
+            } else if(eventType === "練習") {
+              info.el.style.backgroundColor = '#90ee90';
+              if (titleEl) titleEl.style.color = 'black';
+            } else if(eventType === "大会") {
               info.el.style.backgroundColor = '#FFCC00';
-              const titleEl = info.el.querySelector('.fc-event-title');
               if (titleEl) titleEl.style.color = 'black';
             }
           },
