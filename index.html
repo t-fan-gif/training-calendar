@@ -591,12 +591,15 @@
 
        if (selectedValue === '練習') {
           nameInput.disabled = false;
+          nameInput.value = '';
           tournamentNameInput.disabled = true;
         } else if (selectedValue === '大会') {
-              nameInput.disabled = false;
+          nameInput.disabled = false;
+          nameInput.value = '';
           tournamentNameInput.disabled = false;
         } else if (selectedValue === '使用不可') {
           nameInput.disabled = true;
+          nameInput.value = '使用不可'; // ← ここも自動入力
           tournamentNameInput.disabled = true;
         }
       });
@@ -606,12 +609,15 @@
         const selectedValue = eventTypeSelect.value;
         if (selectedValue === '練習') {
           nameInput.disabled = false;
+          nameInput.value = '';
           tournamentNameInput.disabled = true;
         } else if (selectedValue === '大会') {
           nameInput.disabled = false;
+          nameInput.value = '';
           tournamentNameInput.disabled = false;
         } else if (selectedValue === '使用不可') {
           nameInput.disabled = true;
+          nameInput.value = '使用不可';
           tournamentNameInput.disabled = true;
         }
       });
