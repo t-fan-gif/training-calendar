@@ -116,6 +116,15 @@
         margin-bottom: 5px;
       }
 
+      .label-row button {
+        height: 24px;           /* inputの高さに合わせる */
+        font-size: 1rem;
+        display: flex;          /* フレックスボックスを使って */
+        align-items: center;    /* 縦方向中央 */
+        justify-content: center;/* 横方向中央 */
+        box-sizing: border-box; /* padding込みでサイズを調整 */
+      }
+
 
       .fc-timeGridDay-view .fc-timegrid-event {
         max-width: 200px !important;
@@ -323,7 +332,7 @@
           <div class="form-group" >
             <div class="label-row">
               <label for="startTime">開始時間:</label>
-              <button type="button" id="fullDayButton" style="height: 25px;">1日</button>
+              <button type="button" id="fullDayButton" >1日</button>
             </div>
             <input type="time" id="startTime" name="startTime" step="1800" value="06:00">
           </div>
