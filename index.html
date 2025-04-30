@@ -69,12 +69,7 @@
         border-radius: 10px;
         background-color: #f9f9f9;
       }
-      .form-grid{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: space-between;
-      }
+
       .form-group{
         flex: 1 1 45%;
         min-width: 300px;
@@ -94,6 +89,16 @@
       .form-group input[type="checkbox"]{
         width: auto;
         margin-right: 10px;
+      }
+      .form-topline {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-topline .form-group {
+        flex: 1;
+        min-width: 150px;
       }
 
       .checkbox-group{
@@ -268,47 +273,47 @@
     <!-- 入力フォーム -->
     <form id="reservationForm">
       <h2>入力フォーム</h2>
-      <div class="form-grid">
-
-        <div class="form-group">
-          <label for="eventType">種別を選択</label>
-          <select id="eventType" name="eventType" required>
-            <option value="練習"selected>練習</option>
-            <option value="大会">大会</option>
-            <option value="使用不可">使用不可</option>
-          </select>
-        </div>
-
-        <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-          <div style="flex: 1;">
-            <label for="name">名前</label>
-            <input type="text" id="name" name="name" placeholder="名前" required />
+      <div class="form-topline">
+          <div class="form-group">
+            <label for="eventType">種別を選択</label>
+            <select id="eventType" name="eventType" required>
+              <option value="練習"selected>練習</option>
+              <option value="大会">大会</option>
+              <option value="使用不可">使用不可</option>
+            </select>
           </div>
-          <div style="flex: 1;">
-            <label for="tournamentName">大会名</label>
-            <input type="text" id="tournamentName" name="tournamentName" placeholder="大会名" required />
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label for="date">日付</label>
-          <input type="date" id="date" name="date" required />
-        </div>
-
-        <div class="form-group" style="display: flex; align-items: center;gap: 10px;">
-          <div style="flex: 1;">
-            <label for="startTime">開始時間:</label>
-            <input type="time" id="startTime" name="startTime" step="1800" value="06:00">
+          <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+            <div style="flex: 1;">
+              <label for="name">名前</label>
+              <input type="text" id="name" name="name" placeholder="名前" required />
+            </div>
+            <div style="flex: 1;">
+              <label for="tournamentName">大会名</label>
+              <input type="text" id="tournamentName" name="tournamentName" placeholder="大会名" required />
+            </div>
           </div>
-          <div>
-            <button type="button" id="fullDayButton">1日</button>
-          </div>
-        </div>
+      </div>
 
-        <div class="form-group">
-          <label for="endTime">終了時間:</label>
-          <input type="time" id="endTime" name="endTime" step="1800" >
-        </div> 
+          <div class="form-group">
+            <label for="date">日付</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <div class="form-group" style="display: flex; align-items: center;gap: 10px;">
+            <div style="flex: 1;">
+              <label for="startTime">開始時間:</label>
+              <input type="time" id="startTime" name="startTime" step="1800" value="06:00">
+            </div>
+            <div>
+              <button type="button" id="fullDayButton">1日</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="endTime">終了時間:</label>
+            <input type="time" id="endTime" name="endTime" step="1800" >
+          </div> 
 
           <div class="checkbox-group" >
             <label >使用場所</label>
@@ -324,10 +329,9 @@
             <label for="memo">メモ</label>
             <textarea id="memo" name="memo" rows="4" placeholder="必要に応じてメモを記入してください"></textarea>
           </div>
-        <div style="text-align: right; margin-top: 10px;">
+          <div style="text-align: right; margin-top: 10px;">
             <button type="submit"id="submitButton">送信</button>
-        </div>
-      </div>
+          </div>
     </form>
 
           <!-- イベント詳細モーダル -->
