@@ -413,11 +413,16 @@
           slotMinTime: "08:00:00",
           slotMaxTime: "21:00:00",
           views: {
+            dayGridMonth: {
+            displayEventTime: false  // 月ビューだけ時間を消す
+              },
             timeGridDay: {
-            allDayText: '終日' // ここで "all-day" の文字を短縮して変更
+            allDayText: '終日',
+            displayEventTime: true
               },
             timeGridWeek: {
-            allDayText: '終日' // 同じく週ビューにも反映
+            allDayText: '終日',
+            displayEventTime: true
               }
           },
           events: events,
