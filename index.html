@@ -161,6 +161,21 @@
       .narrow-select select {
         width: 80px; /* お好みの幅に調整可能 */
       }
+      .label-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 5px;
+      }
+
+      .label-row label {
+        margin: 0;
+      }
+
+      .label-row button {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+      }
 
       @media (max-width: 768px) {
         html, body {
@@ -288,7 +303,7 @@
           </div>
 
           <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-            <div style="flex: 1;">
+            <div class="label-row" style="flex: 1;">
               <label for="name">名前</label>
               <input type="text" id="name" name="name" placeholder="名前" required />
             </div>
