@@ -528,13 +528,13 @@
       
    
         const data = {
-          eventType: form.eventType,
+          eventType: form.eventType.value,
           name: form.name.value,
           date: form.date.value,
           startTime: form.startTime.value,
           endTime: form.endTime.value,
           location: locationValue,
-          memo: form.memo
+          memo: form.memo.value
         };
 
         if (sessionToken) {
