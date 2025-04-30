@@ -136,23 +136,20 @@
       #reloadButton:hover {
         background-color: #45a049; /* ボタンにホバーしたときの背景色 */
       }
-
-      //*fullcarendar選択中のボタン変更  */
-      .fc-button-active {
-        background-color: #db1d7c !important; /* 緑色など好きな色に */
-        color: white !important;
-        border-color: #db1d7c!important;
+      
+      body .fc .fc-button {
+        background-color: #FF9800 !important;
+        color: black !important;
+        border: 1px solid #ccc !important;
       }
 
-      /* 通常のボタン（非選択中ビュー） */
-      .fc-button {
-        background-color: #FF9800;
-        color: black;
-        border: 1px solid #ccc;
+      body .fc .fc-button-active {
+        background-color: #db1d7c !important;
+        color: white !important;
+        border-color: #db1d7c !important;
       }
        .fc-button-group > .fc-button {
           margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
-          background-color: #FF9800;
       }
 
       @media (max-width: 768px) {
