@@ -310,7 +310,7 @@
             <textarea id="memo" name="memo" rows="4" placeholder="必要に応じてメモを記入してください"></textarea>
           </div>
         <div style="text-align: right; margin-top: 10px;">
-            <button type="submit">送信</button>
+            <button type="submit"id="submitButton">送信</button>
         </div>
       </div>
     </form>
@@ -502,7 +502,7 @@
       document.getElementById("reservationForm").addEventListener("submit", async (e) => {
         e.preventDefault();
         const form = e.target;
-        const button = form.querySelector("button");
+        const button = document.getElementById("submitButton");
 
         const selectedRadio = form.querySelector('input[name="location"]:checked');
         const otherLocationInput = form.querySelector('#otherLocationText');
@@ -528,11 +528,13 @@
       
    
         const data = {
+          eventType: form.eventType,
           name: form.name.value,
           date: form.date.value,
           startTime: form.startTime.value,
           endTime: form.endTime.value,
-          location: locationValue
+          location: locationValue,
+          memo: form.memo
         };
 
         if (sessionToken) {
@@ -543,6 +545,7 @@
           alert("ログインしてください！");
           return;
         }
+        
 
         button.disabled = true;
         button.textContent = "送信中．．．";
