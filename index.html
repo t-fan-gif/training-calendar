@@ -280,9 +280,14 @@
           <input type="date" id="date" name="date" required />
         </div>
 
-        <div class="form-group">
-          <label for="startTime">開始時間:</label>
-          <input type="time" id="startTime" name="startTime" step="1800" value="08:00">
+        <div class="form-group" style="display: flex; align-items: center;gap: 10px;">
+          <div style="flex: 1;">
+            <label for="startTime">開始時間:</label>
+            <input type="time" id="startTime" name="startTime" step="1800" value="06:00">
+          </div>
+          <div>
+            <button type="button" id="fullDayButton">1日</button>
+          </div>
         </div>
 
         <div class="form-group">
@@ -607,6 +612,14 @@
         }
       });
     </script>
+
+      <!-- //1日ボタンのJava -->
+      <script>
+        document.getElementById('fullDayButton').addEventListener('click',function(){
+          document.getElementById('startTime').value = '00:00';
+          document.getElementById('endTime').value = '23:59';
+        });
+      </script>
 
       <!-- //終了時間を２時間後に設定する関数 -->
       <script>
