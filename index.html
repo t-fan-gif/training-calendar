@@ -64,21 +64,28 @@
         max-width: 1000px;
         width: 90%;
         margin: 40px auto;
-        padding: 20px;
+        padding: 15px;
         border: 2px solid #ccc;
         border-radius: 10px;
         background-color: #f9f9f9;
+      }
+      #reservationForm h2 {
+        margin-top: 0;
+        padding-top: 0;
       }
 
       .form-header {
         display: flex;
         align-items: flex-end;
-        gap: 20px;
-        margin-bottom: 20px;
+        gap: 1%;
+        margin-top: 5px;
+        padding-top: 5px;
       }
 
       .form-header h2 {
-        margin: 0;
+        margin: 0%;
+        line-height: 3.0;
+        padding-bottom: 5px;
       }
 
       .form-header .form-group {
@@ -87,12 +94,17 @@
 
       .form-header select {
         width: 70px;
+        height: 35px;
         padding: 4px;
+      }
+      .form-header .form-group label,
+      .form-header .form-group select {
+        font-size: 0.8rem;  /* 必要に応じて調整 (例: 0.75rem, 12pxなど) */
       }
 
       .form-group{
         flex: 1 1 45%;
-        min-width: 150px;
+        min-width: 100px;
       }
       .form-group label{
         font: bold;
@@ -208,7 +220,7 @@
 
       @media (max-width: 768px) {
         html, body {
-           font-size: 12px; /* スマホ向けの文字サイズ */
+           font-size: 1.0rem; /* スマホ向けの文字サイズ */
          }
          #calendar-title {
            font-size: 1.0rem; /* 小さい画面でのタイトルサイズ */
@@ -218,6 +230,17 @@
          .form-group select {
            font-size: 0.9rem; /* フォームの文字サイズ */
          }
+         
+         .form-rowline .form-group {
+           flex: 1 1 100%;
+           min-width: unset; /* 固定幅を解除 */
+           width: 100%;       /* フォーム枠に収める */
+         }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+  }
         
           /* FullCalendarのタイトル部分 */
          .fc-header-toolbar {
