@@ -300,16 +300,18 @@
 
     <!-- 入力フォーム -->
     <form id="reservationForm">
-      <h2>入力フォーム</h2>
+      <div class="form-header">
+        <h2>入力フォーム</h2>
+        <div class="form-group narrow-select">
+          <label for="eventType">種別</label>
+          <select id="eventType" name="eventType" required>
+            <option value="練習" selected>練習</option>
+            <option value="大会">大会</option>
+            <option value="使用不可">使用不可</option>
+          </select>
+        </div>
+      </div>
 
-          <div class="form-group narrow-select" style="flex: 1; max-width: 150px;margin-top: 5px;">
-            <label for="eventType">種別</label>
-            <select id="eventType" name="eventType" required>
-              <option value="練習"selected>練習</option>
-              <option value="大会">大会</option>
-              <option value="使用不可">使用不可</option>
-            </select>
-          </div>
      <div class="form-rowline" >
           <div class="form-group" style="display: flex; gap: 20px; margin-top: 10px;">
             <div style="flex: 1;">
