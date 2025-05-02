@@ -64,7 +64,8 @@
         max-width: 1000px;
         width: 90%;
         margin: 20px auto;
-        padding: 15px;
+        padding: 10px;
+        padding-top: 0px;
         border: 2px solid #ccc;
         border-radius: 10px;
         background-color: #f9f9f9;
@@ -73,17 +74,12 @@
         margin-top: 0;
         padding-top: 0;
       }
-      #submitButton {
-        display: flex;
-        justify-content: flex-end;
-        text-align: center;
-      }
+
 
       .form-header {
         display: flex;
         align-items: flex-end;
-        gap: 1%;
-        margin-top: 5px;
+        gap: 20px;
         padding-top: 5px;
       }
 
@@ -94,13 +90,13 @@
       }
 
       .form-header .form-group {
-        max-width: 100px;
+        max-width: 50px;
       }
 
       .form-header select {
         width: 70px;
-        height: 35px;
-        padding: 4px;
+        height: 30px;
+        padding: 3px;
       }
       .form-header .form-group label,
       .form-header .form-group select {
@@ -263,7 +259,7 @@
          .form-group select {
            font-size: 0.9rem; /* フォームの文字サイズ */
            height: 8px;
-           wodth: 5px;
+           width: 5px;
          }
          
          .form-rowline .form-group {
@@ -392,7 +388,7 @@
             <option value="使用不可">使用不可</option>
           </select>
         </div>
-          <div class="form-header" style="text-align: right; margin-bottom: 20px;margin-right: 20px;width: 80px;height: 40px;">
+          <div class="form-header" style="text-align: right; margin-bottom: 8px">
             <button type="submit"id="submitButton">送信</button>
           </div>    
       </div>
