@@ -45,8 +45,8 @@
         font-family: 'Arial Black', sans-serif;
         font-size: 24px;
         font-weight: bolder;
-        background-color: #c485ff;
-        box-shadow: 0 2px 10px rgba(99, 88, 179, 0.61);
+        background-color: #17c700;
+        box-shadow: 0 2px 10px rgba(91, 179, 88, 0.61);
         padding: 15px 20px;
         flex-shrink: 0;
       }
@@ -73,6 +73,11 @@
       #reservationForm h2 {
         margin-top: 0;
         padding-top: 0;
+      }
+
+      #memo {
+        height: 90% ;
+        width: 100% ;
       }
 
 
@@ -176,9 +181,9 @@
 
       #reloadButton {
         position: fixed;  /* 画面上で固定位置に配置 */
-        top: 10px;        /* 上から10pxの位置 */
+        top: 40px;        /* 上から10pxの位置 */
         right: 10px;      /* 右から10pxの位置 */
-        background-color: #4CAF50; /* ボタンの背景色 */
+        background-color: #000000; /* ボタンの背景色 */
         color: white;     /* ボタンの文字色 */
         padding: 10px 20px; /* ボタン内の余白 */
         border: none;     /* ボーダーを削除 */
@@ -189,19 +194,19 @@
       }
 
       #reloadButton:hover {
-        background-color: #45a049; /* ボタンにホバーしたときの背景色 */
+        background-color: #424242; /* ボタンにホバーしたときの背景色 */
       }
       
       body .fc .fc-button {
-        background-color: #FF9800 !important;
+        background-color: #17c700 !important;
         color: black !important;
         border: 1px solid #ccc !important;
       }
 
       body .fc .fc-button-active {
-        background-color: #db1d7c !important;
+        background-color: #007a2f !important;
         color: white !important;
-        border-color: #db1d7c !important;
+        border-color: #007a2f !important;
       }
        .fc-button-group > .fc-button {
           margin-right: 0.5rem; /* ボタン同士に右マージンをつける */
@@ -229,6 +234,7 @@
         font-size: 1rem;
         max-width: 100%;
         height: auto;
+        background-color: #adadad;
       }
 
       @media (max-width: 768px) {
