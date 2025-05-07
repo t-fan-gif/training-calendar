@@ -25,6 +25,8 @@
 
     <!-- FullCalendar CSS & JS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@6.1.8/main.min.js"></script>
+
     
     <!-- Google Login Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -52,7 +54,10 @@
     </div>
     
     <!-- タイトル-->
-    <div id="calendar-title">academyトレーニングカレンダー</div>
+    <div id="calendar-title" style="display: flex; justify-content: space-between; align-items: center;">
+    <span>academyトレーニングカレンダー</span>
+    <button id="toggleListView">リスト表示</button>
+    </div>
     <div id="calendar"></div>
 
     <!-- 入力フォーム -->
@@ -232,6 +237,10 @@
             timeGridWeek: {
             allDayText: '終日',
             displayEventTime: true
+              },
+            listWeek: {
+            buttonText: 'リスト',
+            noEventsText: 'イベントはありません'
               }
           },
           events: events,
@@ -506,6 +515,18 @@
 
         // ページ読み込み時にも初期状態を設定
         updateOtherTextVisibility();
+      });
+
+
+      </script>
+      <script>
+      document.getElementById('toggleListView').addEventListener('click', () => {
+        const currentView = calendar.view.type;
+        if (currentView === 'listWeek') {
+          calendar.changeView('dayGridMonth');
+        } else {
+          calendar.changeView('listWeek');
+        }
       });
       </script>
   </body>
