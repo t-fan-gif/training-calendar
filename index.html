@@ -136,6 +136,16 @@
         flex: 1;
         min-width: 150px;
       }
+
+      .form-secondline {
+        display: flex;
+        align-items: end;
+        justify-content: flex-start;
+        gap: 2px;
+        margin-bottom: 3px;
+      }
+
+
       .form-thirdline {
         display: flex;
         justify-content: flex-start;
@@ -272,15 +282,20 @@
            font-size: 1.2rem; /* 小さい画面でのタイトルサイズ */
          }
 
+         .form-group {
+          font-size: 0.8rem;
+          margin: unset;
+         }
+
          .form-group input,
          .form-group select {
-           font-size: 0.9rem; /* フォームの文字サイズ */
+           font-size: 0.8rem; /* フォームの文字サイズ */
            width: 100%;
          }
          
          .form-rowline .form-group {
            flex: 1 1 100%;
-           min-width: unset; /* 固定幅を解除 */
+           max-width: 100%; /* 固定幅を解除 */
            width: 100%;       /* フォーム枠に収める */
            height: 20%;
          }
@@ -419,7 +434,7 @@
           </div>
       </div>
       
-      <div class="form-rowline">
+      <div class="form-secondline">
           <div class="form-group">
             <label for="date">日付</label>
             <input type="date" id="date" name="date" required />
