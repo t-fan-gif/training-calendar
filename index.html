@@ -248,12 +248,14 @@
 
       @media (max-width: 768px) {
         html, body {
-           font-size: 0.9rem; /* スマホ向けの文字サイズ */
+           font-size: 1.0rem; /* スマホ向けの文字サイズ */
          }
+
          #fullDayButton {
           width: auto;
           font-size: 0.8rem;
           padding: 4px 10px;
+          padding-bottom: 5px;
           height: 15px;
         }
         #eventType {
@@ -262,28 +264,28 @@
 
         #submitButton {
           font-size: 0.9rem;
-          width: 50px; /* 画面に収めたい場合 */
+          width: 60px; /* 画面に収めたい場合 */
           text-align: center; 
         }
     
          #calendar-title {
-           font-size: 1.0rem; /* 小さい画面でのタイトルサイズ */
+           font-size: 1.2rem; /* 小さい画面でのタイトルサイズ */
          }
 
          .form-group input,
          .form-group select {
            font-size: 0.9rem; /* フォームの文字サイズ */
-           height: 8px;
+           width: 100%;
          }
          
          .form-rowline .form-group {
            flex: 1 1 100%;
            min-width: unset; /* 固定幅を解除 */
            width: 100%;       /* フォーム枠に収める */
+           height: 20%;
          }
 
          .form-thirdline {
-           white-space: nowrap;
            gap: 10px;
          }
         
