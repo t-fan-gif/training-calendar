@@ -615,7 +615,7 @@
               const modalEndTime = document.getElementById('eventModalEndTime');
         
               modalTitle.innerHTML = event.title;
-              modalDescription.innerHTML = `メモ: ${event.memo.toLocaleString() || "詳細情報はありません"}`;
+              modalDescription.innerHTML = `メモ: ${event.memo}` || "詳細情報はありません";
               modalDate.innerHTML = `日時: ${event.start.toLocaleString()}`;
 
               // 日にち（年月日だけ）
