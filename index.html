@@ -100,7 +100,7 @@
 
       .form-header select {
         width: 70px;
-        height: 30px;
+        height: 25px;
         padding: 3px;
       }
       .form-header .form-group label,
@@ -120,6 +120,7 @@
       .form-group input,
       .form-group select{
         width: 100%;
+        height: auto;
         padding: 2px;
         font-size: 1rem;
         margin-bottom: 10px;
@@ -250,7 +251,7 @@
           width: auto;
           font-size: 0.8rem;
           padding: 4px 10px;
-          height: 10px;
+          height: 15px;
         }
         #eventType {
           width: 70px;     /* 必要に応じて 60px 〜 90px などに調整 */
@@ -279,10 +280,6 @@
            width: 100%;       /* フォーム枠に収める */
          }
 
-         .form-group input,
-         .form-group select {
-           width: 100%;
-         }
          .form-thirdline {
            white-space: nowrap;
            gap: 10px;
@@ -615,7 +612,7 @@
               const modalEndTime = document.getElementById('eventModalEndTime');
         
               modalTitle.innerHTML = event.title;
-              modalDescription.innerHTML = `メモ: ${event.memo} || "メモはありません"`;
+              modalDescription.innerHTML = `メモ: ${event.memo}` || '詳細情報はありません';
               modalDate.innerHTML = `日時: ${event.start.toLocaleString()}`;
 
               // 日にち（年月日だけ）
