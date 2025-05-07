@@ -286,7 +286,7 @@
           eventClick: function(info) {
             const event = info.event;
           // 現在のビューが `timeGridDay` の場合のみ処理を実行
-          if (calendar.view.type === 'timeGridDay' || calendar.view.type === 'listMonth') {
+          if (calendar.view.type !== 'timeGridDay' && calendar.view.type !== 'listMonth') {
             calendar.changeView('timeGridDay', event.start)
           } else {
               // モーダルの内容を更新
