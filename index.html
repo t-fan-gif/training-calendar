@@ -115,12 +115,12 @@
       .form-group label{
         font: bold;
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 1px;
       }
       .form-group input,
       .form-group select{
         width: 100%;
-        padding: 8px;
+        padding: 2px;
         font-size: 1rem;
         margin-bottom: 10px;
       }
@@ -218,7 +218,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 5px;
+        margin-bottom: 1px;
       }
 
       .label-row label {
@@ -226,15 +226,20 @@
       }
 
       .label-row button {
-        padding: 5px 10px;
+        width: 50px;
+        height: 20px;
+        padding: 5px 5px;
         font-size: 0.9rem;
       }
       button {
-        padding: 8px 16px;
+        padding: 8px 8px;
         font-size: 1rem;
         max-width: 100%;
         height: auto;
         background-color: #adadad;
+      }
+      #submitButton {
+        width: 70px;
       }
 
       @media (max-width: 768px) {
@@ -245,10 +250,10 @@
           width: auto;
           font-size: 0.8rem;
           padding: 4px 10px;
-          height: 5px;
+          height: 10px;
         }
         #eventType {
-          width: 50px;     /* 必要に応じて 60px 〜 90px などに調整 */
+          width: 70px;     /* 必要に応じて 60px 〜 90px などに調整 */
         }
 
         #submitButton {
@@ -610,7 +615,7 @@
               const modalEndTime = document.getElementById('eventModalEndTime');
         
               modalTitle.innerHTML = event.title;
-              modalDescription.innerHTML = event.extendedProps.description || "詳細情報はありません";
+              modalDescription.innerHTML = `メモ: ${event.memo.toLocaleString() || "詳細情報はありません"}`;
               modalDate.innerHTML = `日時: ${event.start.toLocaleString()}`;
 
               // 日にち（年月日だけ）
