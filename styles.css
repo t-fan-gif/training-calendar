@@ -229,7 +229,7 @@ html, body {
     
     @media (max-width: 768px) {
     html, body {
-    font-size: 0.90rem; /* スマホ向けの文字サイズ */
+    font-size: 0.95rem; /* スマホ向けの文字サイズ */
     }
     
     #fullDayButton {
