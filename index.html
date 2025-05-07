@@ -111,6 +111,7 @@
       .form-group{
         flex: 1 1 45%;
         min-width: 100px;
+        padding: 1px;
       }
       .form-group label{
         font: bold;
@@ -168,6 +169,10 @@
         align-items: center;    /* 縦方向中央 */
         justify-content: center;/* 横方向中央 */
         box-sizing: border-box; /* padding込みでサイズを調整 */
+      }
+
+      .fc {
+        z-index: 1;
       }
 
 
@@ -377,7 +382,8 @@
 
     <div class="g_id_signin"
       data-type="standard"
-      data-size="large">
+      data-size="large"
+      style="width: 50%;">
     </div>
     
     <!-- タイトル-->
@@ -430,7 +436,7 @@
 
           <div class="form-group">
             <label for="endTime">終了時間:</label>
-            <input type="time" id="endTime" name="endTime" step="1800" >
+            <input type="time" id="endTime" name="endTime" >
           </div> 
       </div>
       <div class="form-thirdline" >
@@ -612,7 +618,9 @@
               const modalEndTime = document.getElementById('eventModalEndTime');
         
               modalTitle.innerHTML = event.title;
-              modalDescription.innerHTML = `メモ: ${event.memo}` || '詳細情報はありません';
+
+              const memo = event.extendedProps.memo || '詳細情報はありません';
+              modalDescription.innerHTML = `メモ: ${memo}`;
               modalDate.innerHTML = `日時: ${event.start.toLocaleString()}`;
 
               // 日にち（年月日だけ）
