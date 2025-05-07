@@ -138,6 +138,9 @@
               <p id="eventModalEndTime"></p>
             </div>
           </div>
+          <!--月表示用-->
+          <div id="custom-month-list" class="month-list-container"></div>
+
 
     <!-- ここまで画像描写設定 ---------------------------------------------------->
     <script>
@@ -199,14 +202,7 @@
             sessionToken = result.sessionToken; // セッショントークン保存
             localStorage.setItem("sessionToken", sessionToken);
           }
-//////////////////////////////////////////////////
-const start = new Date();
-start.setDate(1); // 今月の1日
-const end = new Date(start.getFullYear(), start.getMonth() + 1, 0); // 今月の最終日
-const filledEvents = addEmptyEventsForMissingDays(events, start, end);
 
-showCalendar(filledEvents);
-///////////////////////////////////////////////////////
 
           showCalendar(result.events || result); 
         } catch (err) {
@@ -247,8 +243,10 @@ showCalendar(filledEvents);
             displayEventTime: true
               },
             listMonth: {
+            listDayFormat: { weekday: 'short', month: 'numeric', day: 'numeric' }, // 5/7 (水)
             buttonText: '月リスト',
             noEventsText: '',
+            listDaySideFormat: false
               }
           },
           events: events,
@@ -267,13 +265,13 @@ showCalendar(filledEvents);
             const eventType = info.event.extendedProps.eventType;
             const titleEl = info.el.querySelector('.fc-event-title');
             if (eventType === "使用不可") {
-              info.el.style.backgroundColor = 'red';
+              info.el.style.backgroundColor = '#f7a6a6';
               if (titleEl) titleEl.style.color = 'black';
             } else if(eventType === "練習") {
-              info.el.style.backgroundColor = '#90ee90';
+              info.el.style.backgroundColor = '#d4fae2';
               if (titleEl) titleEl.style.color = 'black';
             } else if(eventType === "大会") {
-              info.el.style.backgroundColor = '#FFCC00';
+              info.el.style.backgroundColor = '#f9ff47';
               if (titleEl) titleEl.style.color = 'black';
             }
           },
@@ -288,7 +286,7 @@ showCalendar(filledEvents);
           eventClick: function(info) {
             const event = info.event;
           // 現在のビューが `timeGridDay` の場合のみ処理を実行
-          if (calendar.view.type !== 'timeGridDay') {
+          if (calendar.view.type === 'timeGridDay' || calendar.view.type === 'listMonth') {
             calendar.changeView('timeGridDay', event.start)
           } else {
               // モーダルの内容を更新
@@ -537,26 +535,6 @@ showCalendar(filledEvents);
           calendar.changeView('listMonth');
         }
       });
-      function addEmptyEventsForMissingDays(events, startDate, endDate) {
-        const date = new Date(startDate);
-        const result = [...events];
-
-        while (date <= endDate) {
-          const dateStr = date.toISOString().split('T')[0];
-          const hasEvent = events.some(e => e.start.startsWith(dateStr));
-          if (!hasEvent) {
-            result.push({
-              title: '',  // 空白タイトル
-              start: dateStr,
-              display: 'list-item',  // リストビューだけに表示
-              allDay: true,
-              extendedProps: { isDummy: true }
-            });
-          }
-          date.setDate(date.getDate() + 1);
-        }
-        return result;
-      }
       </script>
 
   </body>
