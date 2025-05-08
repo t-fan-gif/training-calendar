@@ -8,29 +8,44 @@ html, body {
     flex-direction: column;
     }
 
-    #dropdownMenue {
+    .dropdownMenu.dropdown-menu {
     display: none;
     position: absolute;
+    list-style: none;
     right: 0;
     top: 100%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     padding: 8px;
     z-index: 1000;
     white-space: nowrap;
+
+    }
+    .dropdown-menu ul {
+      list-style: none;  /* マーカーを削除 */
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
 
-    #doropList {
-    display: block;
+    .dropdown-menu li {
+      margin: 0;
+      padding-left: 50%;
+      right: 0; 
+    }
+
+    .dropdown-item {
+    display: flex;
+    right: 0;
     border: 0.5;
     border-color: #36ff8391;
     border-radius: 0%;
-    margin-left: 50%;
-    width: 50%;
     color: #000;
-    background: rgba(189, 252, 194, 0.5);
-    text-decoration: none;
+    background: rgba(106, 247, 117, 0.5);
     font-size: 14px;
     white-space: nowrap;
+    }
+    .dropdown-item:hover {
+      background-color: rgba(106, 247, 117, 0.5);
     }
 
     #calendar-title {
