@@ -34,7 +34,7 @@ html, body {
     }
 
     .dropdown-item {
-    display: flex;
+    display: block;
     right: 0;
     border: 0.5;
     border-color: #36ff8391;
@@ -394,4 +394,3 @@ html, body {
     cursor: pointer;
     }
     
-
