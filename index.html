@@ -56,20 +56,18 @@
     <!-- タイトル-->
     <div id="calendar-title" style="display: flex; justify-content: space-between; align-items: center;">
     <span>academyトレーニングカレンダー</span>
-    <button id="toggleListView">リスト</button>
     <!-- メニューボタン-->
     <div style="position: relative;">
-     <button id="menuButton"style="padding: 6px 10px; border-radius: 5px;">☰</button>
+      <button id="menuToggle">≡</button>
 
-     </div>
     </div>
-    <!--ドロップダウンリスト-->
-     <div id="dropdownMenu"class="dropdown-menu">
-      <ul>
-       <li><a href="#" class="dropdown-item" onclick="alert('メニュー1を選択')">メニュー1</a></li>
-       <li><a href="#" class="dropdown-item" onclick="alert('メニュー2を選択')">メニュー2</a></li>
-      </ul>
+  </div>
+    <div id="dropdownMenu">
+        <a href="#" class="dropdown-item" onclick="toggleListView()">リスト表示切替</a>
+        <a href="#" class="dropdown-item" onclick="alert('メニュー1')">メニュー1</a>
+        <a href="#" class="dropdown-item" onclick="alert('メニュー2')">メニュー2</a>
      </div>
+
     <div id="calendar"></div>
 
     <!-- 入力フォーム -->
@@ -539,14 +537,18 @@
       </script>
       <script>
     //縦型表示用の関数
-      document.getElementById('toggleListView').addEventListener('click', () => {
-        const currentView = calendar.view.type;
-        if (currentView === 'listMonth') {
-          calendar.changeView('dayGridMonth');
-        } else {
-          calendar.changeView('listMonth');
-        }
-      });
+    document.getElementById('menuToggle').addEventListener('click', function () {
+  const menu = document.getElementById('dropdownMenu');
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+});
+
+// FullCalendarのリスト表示切り替え用関数（仮例）
+function toggleListView() {
+  const calendarApi = calendar.view;
+  const newView = (calendarApi.type === 'listMonth') ? 'dayGridMonth' : 'listMonth';
+  calendar.changeView(newView);
+  document.getElementById('dropdownMenu').style.display = 'none'; // メニューを閉じる
+}
       </script>
     
       <script>
