@@ -57,7 +57,19 @@
     <div id="calendar-title" style="display: flex; justify-content: space-between; align-items: center;">
     <span>academyトレーニングカレンダー</span>
     <button id="toggleListView">リスト</button>
+    <!-- メニューボタン-->
+    <div style="position: relative;">
+     <button id="menuButton"style="padding: 6px 10px; border-radius: 5px;">☰</button>
+
+     </div>
     </div>
+    <!--ドロップダウンリスト-->
+     <div id="dropdownMenu">
+      <ul style="list-style: none; margin: 0;">
+       <li><button id="doropList"onclick="alert('メニュー1を選択')">メニュー1</button></li>
+       <li><button id="doropList"onclick="alert('メニュー2を選択')">メニュー2</button></li>
+      </ul>
+     </div>
     <div id="calendar"></div>
 
     <!-- 入力フォーム -->
@@ -535,6 +547,23 @@
           calendar.changeView('listMonth');
         }
       });
+      </script>
+    
+      <script>
+      //メニューボタン表示用の関数
+        const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuButton.addEventListener('click', () => {
+          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // メニュー外クリックで閉じる処理（任意）
+        document.addEventListener('click', function (event) {
+          if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+          }
+        });
       </script>
 
   </body>
