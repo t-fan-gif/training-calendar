@@ -8,10 +8,13 @@ html, body {
     flex-direction: column;
     }
 
-    .dropdownMenu.dropdown-menu {
-    display: none;
+    #dropdownMenu {
+      display: none;
+      margin-top: 3px;
+    }
+
+    .dropdown-menu {
     position: absolute;
-    list-style: none;
     right: 0;
     top: 100%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
@@ -24,7 +27,7 @@ html, body {
       list-style: none;  /* マーカーを削除 */
       margin: 0;
       padding: 0;
-      text-align: center;
+      text-align: center !important;
     }
 
     .dropdown-menu li {
@@ -34,18 +37,23 @@ html, body {
     }
 
     .dropdown-item {
+    width: 50%;
+    height: 40%;
+    margin-left: 50%;
+    padding-left: 5%;
     display: block;
     right: 0;
     border: 0.5;
     border-color: #36ff8391;
+    background-color: rgba(166, 253, 145, 0.5);
     border-radius: 0%;
     color: #000;
-    background: rgba(106, 247, 117, 0.5);
+
     font-size: 14px;
     white-space: nowrap;
     }
     .dropdown-item:hover {
-      background-color: rgba(106, 247, 117, 0.5);
+      background-color: rgb(34, 199, 48);
     }
 
     #calendar-title {
@@ -393,4 +401,5 @@ html, body {
     text-decoration: none;
     cursor: pointer;
     }
+    
     
