@@ -32,14 +32,36 @@ export async function loadBulkReservationView() {
     <button id="applyDefaultTimes">選択日に予約適用</button>
   `;
 
-  // 予約フォームの送信処理
-  container.querySelector("#bulkForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    alert(`予約者: ${formData.get("name")}、日付: ${formData.get("dates")}`);
+  // DOMが完全に読み込まれてから処理を実行
+  document.addEventListener("DOMContentLoaded", () => {
+    const datePicker = document.getElementById("multiDatePicker");
+    if (datePicker) {
+      // 日付選択変更時にプレビュー更新
+      datePicker.addEventListener("change", updateReservationPreview);
+    }
+
+    const applyButton = document.getElementById("applyDefaultTimes");
+    if (applyButton) {
+      // 適用ボタン押下時の処理
+      applyButton.addEventListener("click", () => {
+        const selectedDates = datePicker.value;
+        alert(`選択した日付: ${selectedDates} にデフォルト練習時間を適用しました。`);
+        updateReservationPreview();
+      });
+    }
+
+    // 予約フォームの送信処理
+    const bulkForm = document.querySelector("#bulkForm");
+    if (bulkForm) {
+      bulkForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        alert(`予約者: ${formData.get("name")}、日付: ${formData.get("dates")}`);
+      });
+    }
   });
 
-  // 日付選択のプレビュー更新処理
+  // 予約プレビューを更新する関数
   function updateReservationPreview() {
     const selectedDates = document.getElementById("multiDatePicker").value;
     let previewHTML = "<h4>予約プレビュー</h4>";
@@ -58,18 +80,6 @@ export async function loadBulkReservationView() {
 
     document.getElementById("reservationPreview").innerHTML = previewHTML;
   }
-
-  // 日付選択変更時にプレビュー更新
-  document.getElementById("multiDatePicker").addEventListener("change", updateReservationPreview);
-
-  // 適用ボタン押下時の処理
-  container.querySelector("#applyDefaultTimes").addEventListener("click", () => {
-    const selectedDates = document.getElementById("multiDatePicker").value;
-    alert(`選択した日付: ${selectedDates} にデフォルト練習時間を適用しました。`);
-    updateReservationPreview();
-  });
-
-  // カレンダー選択用のライブラリ等を使う場合は、この場所で設定
 
   return container;
 }
