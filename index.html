@@ -4,45 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-
     <title>トレーニングカレンダー</title>
-
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="192x192" href="https://t-fan-gif.github.io/icon-host/appicon.png">
-
     <!-- iOS 用 -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://t-fan-gif.github.io/icon-host/appicon.png">
-
     <!-- PWA 用 manifest -->
     <link rel="manifest" href="./manifest.json">
-
     <!-- モバイルの見た目調整 -->
     <meta name="mobile-web-app-title" content="トレーニングカレンダー">
     <meta name="theme-color" content="#ffffff">
     <meta name="mobile-web-app-capable" content="yes">
-
     <!-- flatpickrのCSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <!-- flatpickrのJS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-
-
     <!-- FullCalendar CSS & JS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@6.1.8/main.min.js"></script>
-
-    
     <!-- Google Login Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-
     <!-- CSSの読み込み-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
-
   </head>
   <body>
     <!-- ページの更新ボタン -->
@@ -71,11 +53,15 @@
   </div>
     <div id="dropdownMenu">
         <a href="#" class="dropdown-item" onclick="toggleListView()">リスト切替</a>
-        <a href="#" class="dropdown-item" id="menuBulk"onclick="closeMenu()">一括予約</a> 
+        <a href="#" class="dropdown-item" id="menuBulk"onclick="showBulkReservationPage()">一括予約</a> 
         <a href="#" class="dropdown-item" onclick="alert('メニュー2')">メニュー2</a>
      </div>
 
     <div id="calendar"></div>
+
+
+    <!-- 一括予約画面を読み込む -->
+    <div id="bulkReservationContainer"></div>
 
     <!-- 入力フォーム -->
     <form id="reservationForm">
@@ -585,6 +571,21 @@ function closeMenu() {
           }
         });
       </script>
+
+    <script>
+    // 一括予約画面のHTMLを読み込む
+    fetch('bulkReservation.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('bulkReservationContainer').innerHTML = html;
+      })
+      .catch(error => console.error('Error loading bulk reservation page:', error));
+
+    // bulkReservation.jsを読み込む
+    const script = document.createElement('script');
+    script.src = 'bulkReservation.js';
+    document.body.appendChild(script);
+  </script>
 
   </body>
 </html>
