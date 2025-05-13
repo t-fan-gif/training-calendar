@@ -22,6 +22,13 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="mobile-web-app-capable" content="yes">
 
+    <!-- flatpickrのCSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- flatpickrのJS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
 
     <!-- FullCalendar CSS & JS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
@@ -135,6 +142,7 @@
             <textarea id="memo" name="memo" rows="4" placeholder="必要に応じてメモを記入してください"></textarea>
           </div>
       </div>
+      
     </form>
 
           <!-- イベント詳細モーダル -->
@@ -150,10 +158,10 @@
           </div>
           <!--月表示用-->
           <div id="custom-month-list" class="month-list-container"></div>
-    <div id="app"></div>
-
+       <div id="app"></div>
 
     <!-- ここまで画像描写設定 ---------------------------------------------------->
+    <!-- 一括予約用-------->
     <script type="module" src="./main.js"></script>
     <script>
       let idToken = null; //グローバル変数に保存
@@ -553,6 +561,13 @@ function toggleListView() {
   document.getElementById('dropdownMenu').style.display = 'none'; // メニューを閉じる
 }
       </script>
+
+      <script>
+function closeMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = "none";
+}
+      </script>
     
       <script>
       //メニューボタン表示用の関数
@@ -570,11 +585,6 @@ function toggleListView() {
           }
         });
       </script>
-      <script>
-       function closeMenu() {
-         const menu = document.getElementById("dropdownMenu");
-         menu.style.display = "none";
-       }
-      </script>
+
   </body>
 </html>
