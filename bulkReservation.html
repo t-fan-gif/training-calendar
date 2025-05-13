@@ -1,0 +1,23 @@
+<!-- bulkReservation.html -->
+<div id="bulkReservationPage" style="display: none; padding: 20px;">
+  <button onclick="showMainPage()">戻る</button>
+  <h2>一括予約</h2>
+  <input id="multiDatePicker" placeholder="日付を選択" readonly />
+  <div id="reservationPreview"></div>
+  <h3>曜日別デフォルト練習時間</h3>
+  <div id="defaultTimeSettings">
+    <table>
+      <tr>
+        <th>曜日</th><th>開始</th><th>終了</th>
+      </tr>
+      ${["日","月","火","水","木","金","土"].map((day, i) => `
+        <tr>
+          <td>${day}</td>
+          <td><input type="time" id="start-${i}" /></td>
+          <td><input type="time" id="end-${i}" /></td>
+        </tr>
+      `).join("")}
+    </table>
+  </div>
+  <button onclick="applyDefaultTimes()">選択日に予約適用</button>
+</div>

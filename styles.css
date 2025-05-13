@@ -191,7 +191,9 @@ html, body {
     .fc .fc-list-event-dot {
         display: none;
       }
-      .fc .fc-daygrid-event-dot {
+      .fc-daygrid-dot-event .fc-event-title,
+      .fc-daygrid-dot-event::before,
+      .circle-indicator {
         display: none !important;
       }
       .fc .fc-list-event.fc-event-selected,
@@ -404,4 +406,3 @@ html, body {
     cursor: pointer;
     }
     
-
