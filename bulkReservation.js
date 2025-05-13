@@ -35,9 +35,14 @@ export async function loadBulkReservationView() {
   // DOMが完全に読み込まれてから処理を実行
   document.addEventListener("DOMContentLoaded", () => {
     const datePicker = document.getElementById("multiDatePicker");
+
+    // flatpickrで日付選択を有効にする
     if (datePicker) {
-      // 日付選択変更時にプレビュー更新
-      datePicker.addEventListener("change", updateReservationPreview);
+      flatpickr(datePicker, {
+        mode: "multiple",  // 複数日選択
+        dateFormat: "Y-m-d", // 日付の表示形式
+        onChange: updateReservationPreview, // 日付が変更されるたびにプレビューを更新
+      });
     }
 
     const applyButton = document.getElementById("applyDefaultTimes");
