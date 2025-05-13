@@ -193,6 +193,7 @@ html, body {
       }
       .fc .fc-daygrid-event-dot {
         display: none !important;
+      }
       .fc .fc-list-event.fc-event-selected,
       .fc .fc-list-event:focus,
       .fc .fc-list-event:active {
