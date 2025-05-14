@@ -1,6 +1,8 @@
 
-  #defaultTimeSettings {
-    margin-top: 20px;
+
+#defaultTimeSettings {
+    width: 70%;
+    margin: 20px auto;
   }
 
   #defaultTimeTable {
@@ -41,6 +43,7 @@
     border-radius: 4px;
     font-size: 13px;
   }
+
 
 
 
