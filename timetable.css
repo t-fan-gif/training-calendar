@@ -56,3 +56,8 @@
   margin-bottom: 200px;
   margin-left: 40%;
   }
+  @media (max-width: 768px) {
+  #multiDateCalendar .flatpickr-calendar {
+    transform: scale(1.0);
+  }
+  }
