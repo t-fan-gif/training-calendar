@@ -1,11 +1,4 @@
 // bulkReservation.js
-
-// メニュー表示/非表示を切り替える
-document.getElementById("menuToggle").addEventListener("click", function() {
-  const menu = document.getElementById("dropdownMenu");
-  menu.style.display = menu.style.display === "none" ? "block" : "none";
-});
-
 // 「一括予約」ボタンがクリックされたときに表示
 function showBulkReservationPage() {
   document.getElementById("calendar").style.display = "none"; // カレンダー非表示
