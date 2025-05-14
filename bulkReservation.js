@@ -22,6 +22,7 @@ function showBulkReservationPage() {
 // 戻るボタンを押したときにカレンダーを再表示
 function showMainPage() {
   document.getElementById("calendar").style.display = "block"; // カレンダー表示
+  document.getElementById("reservationForm").style.display = "block"; // 単一予約フォーム非表示
   document.getElementById("bulkReservationPage").style.display = "none"; // 一括予約非表示
 }
 
@@ -73,3 +74,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
     endInput.value = `${pad(newHours)}:${pad(newMinutes)}`;
   }
+
+  //ローカルファイルに曜日の設定を保存する
+  function saveDefaultTimes() {
+  const defaultTimes = [];
+  const days = ["日", "月", "火", "水", "木", "金", "土"];
+  
+  days.forEach((day, i) => {
+    const startTime = document.getElementById(`start-${i}`).value;
+    const endTime = document.getElementById(`end-${i}`).value;
+    
+    // 保存するデータの形式を作成
+    defaultTimes.push({
+      day: day,
+      start: startTime,
+      end: endTime
+    });
+  });
+
+  // localStorageに保存
+  localStorage.setItem('defaultTimes', JSON.stringify(defaultTimes));
+  alert("設定が保存されました！");
+  }
+
+  function loadDefaultTimes() {
+  const savedTimes = JSON.parse(localStorage.getItem('defaultTimes'));
+
+  if (savedTimes) {
+    savedTimes.forEach((time, i) => {
+      const startInput = document.getElementById(`start-${i}`);
+      const endInput = document.getElementById(`end-${i}`);
+      
+      startInput.value = time.start;
+      endInput.value = time.end;
+    });
+  }
+  }
+
+    // ページ読み込み時にデータをロード
+    window.onload = function() {
+      populateDefaultTimeSettings();
+      loadDefaultTimes();
+    };
+
+
+  
