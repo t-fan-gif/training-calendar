@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>一括予約</title>
 
-  
   <link rel="stylesheet" href="timetable.css">
 </head>
 <body>
@@ -13,7 +12,7 @@
 <div id="bulkReservationPage" style="display: none; padding: 20px;">
   <button onclick="showMainPage()">戻る</button>
   <h2>一括予約</h2>
-  <input id="multiDatePicker" placeholder="日付を選択" readonly />
+  <div id="multiDateCalendar"></div>
   <div id="reservationPreview"></div>
 
   <h3>曜日別デフォルト練習時間</h3>
@@ -28,40 +27,6 @@
 
   <button onclick="applyDefaultTimes()">選択日に予約適用</button>
 </div>
-
-<script>
-  // 一括予約ページが表示されたときにテーブル行を追加
-  function populateDefaultTimeSettings() {
-    const days = ["日","月","火","水","木","金","土"];
-    const table = document.getElementById("defaultTimeTable");
-
-    days.forEach((day, i) => {
-      const row = document.createElement("tr");
-
-      row.innerHTML = `
-        <td>${day}</td>
-        <td><input type="time" id="start-${i}" /></td>
-        <td><input type="time" id="end-${i}" /></td>
-      `;
-
-      table.appendChild(row);
-    });
-  }
-
-  // 表示時に一度だけテーブルを構築（ページ表示制御と併用）
-  function showBulkReservationPage() {
-    document.getElementById("bulkReservationPage").style.display = "block";
-    document.getElementById("mainPage").style.display = "none";
-    if (!document.getElementById("start-0")) {
-      populateDefaultTimeSettings(); // 初回のみ生成
-    }
-  }
-
-  function showMainPage() {
-    document.getElementById("bulkReservationPage").style.display = "none";
-    document.getElementById("mainPage").style.display = "block";
-  }
-</script>
 
 </body>
 </html>

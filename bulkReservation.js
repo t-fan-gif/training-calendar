@@ -18,13 +18,18 @@ function showMainPage() {
 
 // 日付選択用のflatpickr初期化
 document.addEventListener("DOMContentLoaded", function() {
-  const datePicker = document.getElementById("multiDatePicker");
-
-  flatpickr(datePicker, {
-    mode: "multiple", // 複数日選択
+  flatpickr("#multiDateCalendar", {
+    mode: "multiple",         // 複数日選択
+    inline: true,             // 常時表示カレンダー
     dateFormat: "Y-m-d",
+    locale: "ja",             // 日本語対応（任意）
+    onChange: function(selectedDates, dateStr, instance) {
+      console.log("選択された日付:", selectedDates);
+      // ここで予約の仮表示や処理を入れてもOK
+    }
   });
 });
+
 
   // 一括予約ページが表示されたときにテーブル行を追加
   function populateDefaultTimeSettings() {
@@ -36,11 +41,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
       row.innerHTML = `
         <td>${day}</td>
-        <td><input type="time" id="start-${i}" /></td>
-        <td><input type="time" id="end-${i}" /></td>
+        <td><input type="time" id="start-${i}" value="00:00" onchange="autoFillEndTime(${i})"/></td>
+        <td><input type="time" id="end-${i}" value="00:00"/></td>
       `;
 
       table.appendChild(row);
     });
   }
 
+    function autoFillEndTime(index) {
+    const startInput = document.getElementById(`start-${index}`);
+    const endInput = document.getElementById(`end-${index}`);
+
+    const [hours, minutes] = startInput.value.split(":").map(Number);
+    if (isNaN(hours) || isNaN(minutes)) return;
+
+    let newHours = (hours + 3) % 24;
+    let newMinutes = minutes;
+
+    // 2桁に揃える
+    const pad = (n) => n.toString().padStart(2, "0");
+
+    endInput.value = `${pad(newHours)}:${pad(newMinutes)}`;
+  }
