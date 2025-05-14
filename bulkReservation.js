@@ -22,7 +22,7 @@ function showBulkReservationPage() {
 // 戻るボタンを押したときにカレンダーを再表示
 function showMainPage() {
   document.getElementById("calendar").style.display = "block"; // カレンダー表示
-  document.getElementById("reservationForm").style.display = "block"; // 単一予約フォーム非表示
+  document.getElementById("reservationForm").style.display = "block"; // 単一予約フォーム表示
   document.getElementById("bulkReservationPage").style.display = "none"; // 一括予約非表示
 }
 
@@ -51,6 +51,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
       row.innerHTML = `
         <td>${day}</td>
+        <td><select id="placeData" name="placeData" required>
+            <option value="山形大学" selected>山形大学</option>
+            <option value="あかねヶ丘">あかねヶ丘</option>
+            <option value="天童ND">天童ND</option>
+          </select>
+
         <td><input type="time" id="start-${i}" value="00:00" onchange="autoFillEndTime(${i})"/></td>
         <td><input type="time" id="end-${i}" value="00:00"/></td>
       `;
