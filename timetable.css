@@ -1,0 +1,43 @@
+
+  #defaultTimeSettings {
+    margin-top: 20px;
+  }
+
+  #defaultTimeTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  #defaultTimeTable th,
+  #defaultTimeTable td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  #defaultTimeTable th {
+    background-color: #f7f7f7;
+    font-weight: 600;
+    color: #333;
+  }
+
+  #defaultTimeTable tr:nth-child(even) td {
+    background-color: #fafafa;
+  }
+
+  #defaultTimeTable tr:last-child td {
+    border-bottom: none;
+  }
+
+  input[type="time"] {
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+  }
