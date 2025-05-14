@@ -3,6 +3,7 @@
 // 「一括予約」ボタンがクリックされたときに表示
 function showBulkReservationPage() {
   document.getElementById("calendar").style.display = "none"; // カレンダー非表示
+  document.getElementById("reservationForm").style.display = "none"; // 単一予約フォーム非表示
   document.getElementById("bulkReservationPage").style.display = "block"; // 一括予約表示
   document.getElementById("dropdownMenu").style.display = "none"; // メニュー非表示
       if (!document.getElementById("start-0")) {
