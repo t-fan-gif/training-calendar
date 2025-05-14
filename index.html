@@ -104,7 +104,7 @@
               <label for="startTime">開始時間:</label>
               <button type="button" id="fullDayButton" >1日</button>
             </div>
-            <input type="time" id="startTime" name="startTime" step="1800" value="06:00">
+            <input type="time" id="startTime" name="startTime"  value="06:00">
           </div>
 
           <div class="form-group">
@@ -478,7 +478,7 @@
 
         if (startTime) {
           const [hour, minute] = startTime.split(':').map(Number);
-          let endHour = hour + 2;
+          let endHour = hour + 3;
           let endMinute = minute;
 
           // 24時間制オーバー対応
@@ -547,12 +547,7 @@ function toggleListView() {
 }
       </script>
 
-      <script>
-function closeMenu() {
-  const menu = document.getElementById("dropdownMenu");
-  menu.style.display = "none";
-}
-      </script>
+
     
       <script>
       //メニューボタン表示用の関数
