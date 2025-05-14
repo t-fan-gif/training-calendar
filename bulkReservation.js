@@ -7,7 +7,15 @@ function showBulkReservationPage() {
   document.getElementById("dropdownMenu").style.display = "none"; // メニュー非表示
       if (!document.getElementById("start-0")) {
       populateDefaultTimeSettings(); // 初回のみ生成
-}
+      }
+    document.getElementById("bulkReservationPage").style.display = "block";
+  flatpickr("#multiDateCalendar", {
+    mode: "multiple",
+    inline: true,
+    dateFormat: "Y-m-d",
+    disableMobile: true,
+    locale: "ja"
+  });
 }
 
 // 戻るボタンを押したときにカレンダーを再表示
