@@ -191,16 +191,16 @@ html, body {
     .fc .fc-list-event-dot {
         display: none;
       }
-      .fc-daygrid-event-dot {
-        display: none ;
-      }
+
       .fc .fc-list-event.fc-event-selected,
       .fc .fc-list-event:focus,
       .fc .fc-list-event:active {
         background-color: inherit !important;  /* 背景色を継承させる */
         box-shadow: none !important;           /* 不要なら影も消す */
       }
-      
+      .fc-daygrid-event-dot {
+        display: none ;
+      }   
     
     .fc-timeGridDay-view .fc-timegrid-event {
     max-width: 200px !important;
