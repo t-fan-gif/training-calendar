@@ -63,5 +63,7 @@
   
   .flatpickr-calendar {
     transform: scale(1.0);
-  }
+    margin-left: 25%;
+    margin-bottom: 10%;  
+    }
   }
