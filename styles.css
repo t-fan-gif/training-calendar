@@ -48,7 +48,6 @@ body {
   padding-top: 10px;
   flex-grow: 1;
   max-width: 1000px;
-  margin: 20px auto;
   width: 100%;
 }
 
@@ -296,7 +295,8 @@ button {
 #listChange {
   display: flex;
   justify-content: flex-end;
-  margin: 1% 7%;
+  margin-right: 7%;
+  margin-top: 1%;
 }
 
 .button01 {
