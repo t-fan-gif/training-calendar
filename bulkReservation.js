@@ -10,7 +10,7 @@ function showBulkReservationPage() {
       populateDefaultTimeSettings(); // 初回のみ生成
       }
     document.getElementById("bulkReservationPage").style.display = "block";
-  flatpickr("#multiDateCalendar", {
+  multicarendar = flatpickr("#multiDateCalendar", {
     mode: "multiple",
     inline: true,
     dateFormat: "Y-m-d",
@@ -69,54 +69,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
   /////////予約データ送信用/////////
 async function sendBulkReservations() {
-  const days = ["日", "月", "火", "水", "木", "金", "土"];
-  const selectedDates = flatpickr("#multiDateCalendar").selectedDates;
-  const nameValue = document.getElementById('names');
+  const button = document.getElementById("vulusend");
+  const selectedDates = multicarendar.selectedDates;
+  const nameValue = document.getElementById('names').value;
   // 曜日ごとの設定を取得
-  const defaultTimes = {};
-  for (let i = 0; i < 7; i++) {
-    const start = document.getElementById(`start-${i}`).value;
-    const end = document.getElementById(`end-${i}`).value;
+const reservations = [];
+let hasInvalidSetting = false;
 
-    const placeSelect = document.getElementById(`placeData-${i}`);
-    const place = placeSelect.value;
+selectedDates.forEach((date) => {
+  const jsDate = new Date(date);
+  const dayIndex = jsDate.getDay(); // 曜日番号（0=日曜）
 
-    if (start && end && (start.value !== "00:00" || end.value !== "00:00")) {
-    if (!placeSelect || placeSelect.value === "選択なし") {
-      alert(`${days[i]}曜日の場所を選んでください`);
-      return; // 処理中断
-    }
-  }
+  const placeSelect = document.querySelector(`#defaultTimeTable tr:nth-child(${dayIndex + 1}) select`);
+  const startInput = document.getElementById(`start-${dayIndex}`);
+  const endInput = document.getElementById(`end-${dayIndex}`);
 
-    defaultTimes[i] = { start, end, place };
-  }
-    // 各選択日付に対して予約データを作成
-  const reservations = selectedDates.map(dateStr => {
-    const dateObj = new Date(dateStr);
-    const day = dateObj.getDay(); // 0〜6（日〜土）
+  const placeValue = placeSelect?.value || "";
+  const startTime = startInput?.value || "";
+  const endTime = endInput?.value || "";
 
-    const { start, end, place } = defaultTimes[day] || {};
-
-    return {
-      eventType: "練習",
-      name: nameValue,
-      tournamentName: "",
-      date: dateStr,
-      startTime: start,
-      endTime: end,
-      location: place,
-      memo: ""
-    };
-  });
-
-  if (reservations.length === 0) {
-    alert("予約データがありません");
+  // 必須設定が不足している場合はエラーフラグを立てる
+  if (placeValue === "選択なし" || startTime === "" || endTime === "") {
+    alert(`「${date.toLocaleDateString()}」の設定が不足しています。\n場所、開始時間、終了時間をすべて指定してください。`);
+    hasInvalidSetting = true;
     return;
   }
 
-  const button = document.getElementById("bulkSubmitButton");
-  button.disabled = true;
-  button.textContent = "送信中";
+  reservations.push({
+    eventType: "練習",
+    name: nameValue,
+    tournamentName: "",
+    date: date.toISOString().slice(0, 10),
+    startTime,
+    endTime,
+    location: placeValue,
+    memo: ""
+  });
+});
+
+  if (hasInvalidSetting) {
+  return; // 不正があれば送信しない
+}
 
   const payload = { reservations };
 
@@ -141,7 +134,6 @@ async function sendBulkReservations() {
     const result = await response.json();
     if (result.success) {
       alert("一括予約を送信しました！");
-      document.getElementById("bulkReservationForm").reset?.(); // フォームがあればリセット
       fetchEventsAndShowCalendar(); // カレンダー再取得（単一予約と同様）
     } else {
       alert("送信に失敗しました。");
