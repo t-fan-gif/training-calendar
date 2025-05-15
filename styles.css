@@ -14,7 +14,7 @@ body {
   justify-content: flex-start;
   /* 左揃え（中央にしたければ center） */
   height: auto;
-  background: linear-gradient(0deg, rgb(214, 253, 74), rgb(0, 175, 93));
+  background: linear-gradient(0deg, rgb(103, 255, 89), rgb(0, 175, 93));
 }
 
 .dropdown-item {
@@ -35,7 +35,7 @@ body {
   font-family: 'Arial Black', sans-serif;
   font-size: 24px;
   font-weight: bolder;
-  background: linear-gradient(0deg, rgb(131, 255, 142), rgb(255, 255, 255));
+  background: linear-gradient(180deg, rgb(214, 253, 74), rgb(0, 175, 93));
   padding-top: 25px;
   padding-bottom: 10px;
   padding-left: 20px;
