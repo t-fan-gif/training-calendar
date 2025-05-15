@@ -54,9 +54,9 @@
         
      </div>
 
-     
+
      <div id="listChange">
-        <a href="#"   onclick="toggleListView()">リスト切替</a>
+        <a href="#"  class="button01" onclick="toggleListView()">リスト表示</a>
      </div>
 
   <div id="calendar"></div>
@@ -542,7 +542,7 @@
             // 表示ビューに応じてリスト切替ボタンのラベルを更新（任意）
           const toggleButton = document.querySelector('#listChange a');
           if (toggleButton) {
-            toggleButton.textContent = (newView === 'listMonth') ? '月表示に切替' : 'リスト表示に切替';
+            toggleButton.textContent = (newView === 'listMonth') ? '月表示' : 'リスト表示';
           }
       }
       </script>
