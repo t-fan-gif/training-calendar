@@ -44,20 +44,17 @@
     
     <!-- タイトル-->
     <div id="calendar-title" style="display: flex; justify-content: space-between; align-items: center;">
-    <span>academyトレーニングカレンダー</span>
-    <!-- メニューボタン-->
-    <div style="position: relative;">
-      <button id="menuToggle">≡</button>
-
+      <span>academyトレーニングカレンダー</span>
     </div>
-  </div>
+
+
     <div id="dropdownMenu">
         <a href="#" class="dropdown-item" onclick="toggleListView()">リスト切替</a>
         <a href="#" class="dropdown-item" id="menuBulk"onclick="showBulkReservationPage()">一括予約</a> 
         <a href="#" class="dropdown-item" onclick="alert('メニュー2')">メニュー2</a>
      </div>
 
-    <div id="calendar"></div>
+  <div id="calendar"></div>
 
 
     <!-- 一括予約画面を読み込む -->
@@ -545,25 +542,6 @@ function toggleListView() {
   calendar.changeView(newView);
   document.getElementById('dropdownMenu').style.display = 'none'; // メニューを閉じる
 }
-      </script>
-
-
-    
-      <script>
-      //メニューボタン表示用の関数
-        const menuButton = document.getElementById('menuButton');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-
-        menuButton.addEventListener('click', () => {
-          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
-        // メニュー外クリックで閉じる処理（任意）
-        document.addEventListener('click', function (event) {
-          if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-          }
-        });
       </script>
 
     <script>

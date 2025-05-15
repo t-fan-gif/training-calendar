@@ -9,59 +9,34 @@ html, body {
     }
 
     #dropdownMenu {
-      display: none;
-      margin-top: 3px;
-    }
-
-    .dropdown-menu {
-    position: absolute;
-    right: 0;
-    top: 100%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    padding: 8px;
-    z-index: 1000;
-    white-space: nowrap;
-
-    }
-    .dropdown-menu ul {
-      list-style: none;  /* マーカーを削除 */
-      margin: 0;
-      padding: 0;
-      text-align: center !important;
-    }
-
-    .dropdown-menu li {
-      margin: 0;
-      padding-left: 50%;
-      right: 0; 
+      display: flex;
+      justify-content: flex-start; /* 左揃え（中央にしたければ center） */
+      height: auto;
+      background: linear-gradient(0deg,rgb(55, 223, 97),rgb(131, 255, 142));
     }
 
     .dropdown-item {
-    width: 50%;
-    margin-left: 50%;
-    padding-left: 5%;
-    display: block;
-    right: 0;
-    border: 0.5;
-    border-color: #36ff8391;
-    background-color: rgba(166, 253, 145, 0.5);
-    border-radius: 0%;
-    color: #000;
-
-    font-size: 14px;
-    white-space: nowrap;
+      display: inline-block;
+      padding: 8px 25px;
+      background: linear-gradient(0deg,rgb(55, 223, 97),rgb(131, 255, 142));
+      color: #000;
+      text-decoration: none;
+      font-size: auto;
+      cursor: pointer;
     }
+
     .dropdown-item:hover {
-      background-color: rgb(34, 199, 48);
+      background: rgb(34, 199, 48);
     }
 
     #calendar-title {
     font-family: 'Arial Black', sans-serif;
     font-size: 24px;
     font-weight: bolder;
-    background-color: #17c700;
-    box-shadow: 0 2px 10px rgba(91, 179, 88, 0.61);
-    padding: 15px 20px;
+    background: linear-gradient(0deg,rgb(131, 255, 142),rgb(255, 255, 255));
+    padding-top: 25px;
+    padding-bottom: 10px;
+    padding-left: 20px;
     flex-shrink: 0;
     }
     
@@ -191,16 +166,16 @@ html, body {
     .fc .fc-list-event-dot {
         display: none;
       }
-
+      .fc-daygrid-event-dot {
+        display: none ;
+      }
       .fc .fc-list-event.fc-event-selected,
       .fc .fc-list-event:focus,
       .fc .fc-list-event:active {
         background-color: inherit !important;  /* 背景色を継承させる */
         box-shadow: none !important;           /* 不要なら影も消す */
       }
-      .fc-daygrid-event-dot {
-        display: none ;
-      }   
+      
     
     .fc-timeGridDay-view .fc-timegrid-event {
     max-width: 200px !important;
