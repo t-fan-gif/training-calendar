@@ -51,8 +51,7 @@
 
     </div>
 
-
-    <div id="listChange">
+    <div id="listChange" >
         <a href="#" class="button01" onclick="toggleListView()">リスト表示</a>
     </div>
 
@@ -567,6 +566,17 @@
         script.src = 'bulkReservation.js';
         document.body.appendChild(script);
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const listChange = document.getElementById('listChange');
+  if (listChange) {
+    // 強制的に再適用
+    listChange.style.display = 'flex';
+    listChange.style.justifyContent = 'flex-end';
+  }
+});
+</script>
 
 </body>
 
