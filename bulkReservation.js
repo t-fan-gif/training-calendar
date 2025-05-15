@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
       row.innerHTML = `
         <td>${day}</td>
         <td><select id="placeData" name="placeData" required>
+            <option value="選択なし" selected>選択なし</option>
             <option value="山形大学" selected>山形大学</option>
             <option value="あかねヶ丘">あかねヶ丘</option>
             <option value="天童ND">天童ND</option>
@@ -65,6 +66,96 @@ document.addEventListener("DOMContentLoaded", function() {
       table.appendChild(row);
     });
   }
+
+  /////////予約データ送信用/////////
+async function sendBulkReservations() {
+  const days = ["日", "月", "火", "水", "木", "金", "土"];
+  const selectedDates = flatpickr("#multiDateCalendar").selectedDates;
+  const nameValue = document.getElementById('names');
+  // 曜日ごとの設定を取得
+  const defaultTimes = {};
+  for (let i = 0; i < 7; i++) {
+    const start = document.getElementById(`start-${i}`).value;
+    const end = document.getElementById(`end-${i}`).value;
+
+    const placeSelect = document.querySelectorAll('select[name="placeData"]')[i];
+    const place = placeSelect.value;
+
+    if (start && end && (start.value !== "00:00" || end.value !== "00:00")) {
+    if (!placeSelect || placeSelect.value === "選択なし") {
+      alert(`${days[i]}曜日の場所を選んでください`);
+      return; // 処理中断
+    }
+  }
+
+    defaultTimes[i] = { start, end, place };
+  }
+    // 各選択日付に対して予約データを作成
+  const reservations = selectedDates.map(dateStr => {
+    const dateObj = new Date(dateStr);
+    const day = dateObj.getDay(); // 0〜6（日〜土）
+
+    const { start, end, place } = defaultTimes[day] || {};
+
+    return {
+      eventType: "練習",
+      name: nameValue,
+      tournamentName: "",
+      date: dateStr,
+      startTime: start,
+      endTime: end,
+      location: place,
+      memo: ""
+    };
+  });
+
+  if (reservations.length === 0) {
+    alert("予約データがありません");
+    return;
+  }
+
+  const button = document.getElementById("bulkSubmitButton");
+  button.disabled = true;
+  button.textContent = "送信中";
+
+  const payload = { reservations };
+
+  // トークン追加（単一予約と同じく）
+  if (sessionToken) {
+    payload.sessionToken = sessionToken;
+  } else if (idToken) {
+    payload.token = idToken;
+  } else {
+    alert("ログインしてください！");
+    button.disabled = false;
+    button.textContent = "送信";
+    return;
+  }
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyqMS4HODhhGJsHumGNdPC82490s1hVV09PUcUhOsrnAgJxq48iOgn_YoiRkuVx0ty60w/exec", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      alert("一括予約を送信しました！");
+      document.getElementById("bulkReservationForm").reset?.(); // フォームがあればリセット
+      fetchEventsAndShowCalendar(); // カレンダー再取得（単一予約と同様）
+    } else {
+      alert("送信に失敗しました。");
+    }
+  } catch (error) {
+    console.error("送信エラー", error);
+    alert("通信エラーが発生しました。");
+  } finally {
+    button.disabled = false;
+    button.textContent = "送信";
+  }
+}
+
+///////////////////////////////////////////////////////
 
     function autoFillEndTime(index) {
     const startInput = document.getElementById(`start-${index}`);

@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <title>一括予約</title>
 
   <link rel="stylesheet" href="timetable.css">
 </head>
+
 <body>
 
-<!-- bulkReservation.html -->
-<div id="bulkReservationPage" style="display: none; padding: 20px;">
-  <h2>一括予約</h2>
-  <div id="multiDateCalendar"></div>
-  <div id="reservationPreview"></div>
+  <!-- bulkReservation.html -->
+  <div id="bulkReservationPage" style="display: none; padding: 20px;">
+    <h2>一括予約</h2>
+    <div id="multiDateCalendar"></div>
+    <div id="reservationPreview"></div>
 
-  <h3 id="defoltTitle"style="margin-top: 25%;">曜日別デフォルト練習時間</h3>
-  <div id="defaultTimeSettings">
-    <table id="defaultTimeTable" border="1">
-      <tr>
-        <th>曜日</th><th>場所</th><th>開始</th><th>終了</th>
-      </tr>
-      <!-- JSで行を挿入 -->
-    </table>
+    <h3 id="defoltTitle" style="margin-top: 25%;">曜日別デフォルト練習時間</h3>
+    <div>
+      <label for="names">名前</label>
+      <input type="text" id="names" name="names" placeholder="名前" required />
+
+    </div>
+    <div id="defaultTimeSettings">
+      <table id="defaultTimeTable" border="1">
+        <tr>
+          <th>曜日</th>
+          <th>場所</th>
+          <th>開始</th>
+          <th>終了</th>
+        </tr>
+        <!-- JSで行を挿入 -->
+      </table>
+    </div>
+    <button onclick="saveDefaultTimes()">保存</button>
+
+    <button id="vulusend" onclick="sendBulkReservations()">選択日に予約適用</button>
   </div>
-  <button onclick="saveDefaultTimes()">保存</button>
-
-  <button onclick="applyDefaultTimes()">選択日に予約適用</button>
-</div>
 
 </body>
+
 </html>
