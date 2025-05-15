@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       row.innerHTML = `
         <td>${day}</td>
-        <td><select id="placeData" name="placeData" required>
+        <td><select id="placeData-${i}" name="placeData" required>
             <option value="選択なし" selected>選択なし</option>
-            <option value="山形大学" selected>山形大学</option>
+            <option value="山形大学" >山形大学</option>
             <option value="あかねヶ丘">あかねヶ丘</option>
             <option value="天童ND">天童ND</option>
           </select>
@@ -78,7 +78,7 @@ async function sendBulkReservations() {
     const start = document.getElementById(`start-${i}`).value;
     const end = document.getElementById(`end-${i}`).value;
 
-    const placeSelect = document.querySelectorAll('select[name="placeData"]')[i];
+    const placeSelect = document.getElementById(`placeData-${i}`);
     const place = placeSelect.value;
 
     if (start && end && (start.value !== "00:00" || end.value !== "00:00")) {
