@@ -51,7 +51,12 @@
     <div id="dropdownMenu">
         <a href="#" class="dropdown-item" onclick="home()">ホーム</a>
         <a href="#" class="dropdown-item" id="menuBulk"onclick="showBulkReservationPage()">一括予約</a> 
-        <a href="#" class="dropdown-item" onclick="toggleListView()">リスト切替</a>
+        
+     </div>
+
+     
+     <div id="listChange">
+        <a href="#"   onclick="toggleListView()">リスト切替</a>
      </div>
 
   <div id="calendar"></div>
@@ -529,18 +534,17 @@
 
       </script>
       <script>
-    //縦型表示用の関数
-    document.getElementById('menuToggle').addEventListener('click', function () {
-  const menu = document.getElementById('dropdownMenu');
-  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-});
-
-// FullCalendarのリスト表示切り替え用関数（仮例）
-function toggleListView() {
-  const calendarApi = calendar.view;
-  const newView = (calendarApi.type === 'listMonth') ? 'dayGridMonth' : 'listMonth';
-  calendar.changeView(newView);
-}
+      // FullCalendarのリスト表示切り替え用関数（仮例）
+      function toggleListView() {
+        const calendarApi = calendar.view;
+        const newView = (calendarApi.type === 'listMonth') ? 'dayGridMonth' : 'listMonth';
+        calendar.changeView(newView);
+            // 表示ビューに応じてリスト切替ボタンのラベルを更新（任意）
+          const toggleButton = document.querySelector('#listChange a');
+          if (toggleButton) {
+            toggleButton.textContent = (newView === 'listMonth') ? '月表示に切替' : 'リスト表示に切替';
+          }
+      }
       </script>
 
     <script>
