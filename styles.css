@@ -279,13 +279,13 @@ html, body {
     }
     
     .form-group {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin: unset;
     }
     
     .form-group input,
     .form-group select {
-    font-size: 0.8rem; /* フォームの文字サイズ */
+    font-size: 0.9rem; /* フォームの文字サイズ */
     width: 100%;
     }
     
@@ -378,4 +378,4 @@ html, body {
     text-decoration: none;
     cursor: pointer;
     }
-    
+

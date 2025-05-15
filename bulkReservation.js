@@ -5,7 +5,6 @@ function showBulkReservationPage() {
   document.getElementById("calendar").style.display = "none"; // カレンダー非表示
   document.getElementById("reservationForm").style.display = "none"; // 単一予約フォーム非表示
   document.getElementById("bulkReservationPage").style.display = "block"; // 一括予約表示
-  document.getElementById("dropdownMenu").style.display = "none"; // メニュー非表示
       if (!document.getElementById("start-0")) {
       populateDefaultTimeSettings(); // 初回のみ生成
       }
@@ -19,8 +18,8 @@ function showBulkReservationPage() {
   });
 }
 
-// 戻るボタンを押したときにカレンダーを再表示
-function showMainPage() {
+// ホームボタンを押したときにカレンダーを再表示
+function home() {
   document.getElementById("calendar").style.display = "block"; // カレンダー表示
   document.getElementById("reservationForm").style.display = "block"; // 単一予約フォーム表示
   document.getElementById("bulkReservationPage").style.display = "none"; // 一括予約非表示
