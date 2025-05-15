@@ -14,13 +14,13 @@ body {
   justify-content: flex-start;
   /* 左揃え（中央にしたければ center） */
   height: auto;
-  background: linear-gradient(0deg, rgb(55, 223, 97), rgb(131, 255, 142));
+  background: linear-gradient(0deg, rgb(214, 253, 74), rgb(0, 175, 93));
 }
 
 .dropdown-item {
   display: inline-block;
   padding: 8px 25px;
-  background: linear-gradient(0deg, rgb(55, 223, 97), rgb(131, 255, 142));
+  background: linear-gradient(0deg, rgb(103, 255, 89), rgb(0, 175, 93));
   color: #000;
   text-decoration: none;
   font-size: auto;
