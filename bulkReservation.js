@@ -195,25 +195,33 @@ selectedDates.forEach((date) => {
   alert("設定が保存されました！");
   }
 
-  function loadDefaultTimes() {
-  const savedTimes = JSON.parse(localStorage.getItem('defaultTimes'));
 
-  if (savedTimes) {
-    savedTimes.forEach((time, i) => {
-      const startInput = document.getElementById(`start-${i}`);
-      const endInput = document.getElementById(`end-${i}`);
-      
+function loadDefaultTimes() {
+  const saved = JSON.parse(localStorage.getItem('defaultTimes'));
+  if (!saved) return;
+
+  const savedTimes = saved.defaultTimes || [];
+  savedTimes.forEach((time, i) => {
+    const startInput = document.getElementById(`start-${i}`);
+    const endInput = document.getElementById(`end-${i}`);
+    const locationInput = document.getElementById(`placeData-${i}`);
+
+    if (startInput && endInput && locationInput) {
       startInput.value = time.start;
       endInput.value = time.end;
-    });
+      locationInput.value = time.location;
+    }
+  });
+
+  if (saved.name) {
+    const nameInput = document.getElementById("names");
+    if (nameInput) nameInput.value = saved.name;
   }
-  }
+}
 
-    // ページ読み込み時にデータをロード
-    window.onload = function() {
-      populateDefaultTimeSettings();
-      loadDefaultTimes();
-    };
-
-
+// ページ読み込み時にデータをロード
+window.onload = function() {
+  populateDefaultTimeSettings();
+  loadDefaultTimes();
+};
   
