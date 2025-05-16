@@ -173,17 +173,25 @@ selectedDates.forEach((date) => {
   days.forEach((day, i) => {
     const startTime = document.getElementById(`start-${i}`).value;
     const endTime = document.getElementById(`end-${i}`).value;
+    const location = document.getElementById(`placeData-${i}`).value;
     
     // 保存するデータの形式を作成
     defaultTimes.push({
       day: day,
       start: startTime,
-      end: endTime
+      end: endTime,
+      location: location,
     });
   });
 
+    const name = document.getElementById("names").value;
+    const settings = {
+    defaultTimes: defaultTimes,
+    name: name,
+    };
+
   // localStorageに保存
-  localStorage.setItem('defaultTimes', JSON.stringify(defaultTimes));
+  localStorage.setItem('defaultTimes', JSON.stringify(settings));
   alert("設定が保存されました！");
   }
 
