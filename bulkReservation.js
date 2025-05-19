@@ -77,6 +77,7 @@ const reservations = [];
 let hasInvalidSetting = false;
 
 selectedDates.forEach((date) => {
+  const uuid = generateUUID();
   const jsDate = new Date(date);
   const dayIndex = jsDate.getDay(); // 曜日番号（0=日曜）
 
@@ -96,10 +97,11 @@ selectedDates.forEach((date) => {
   }
 
   reservations.push({
+    id: uuid,
     eventType: "練習",
     name: nameValue,
     tournamentName: "",
-    date: date.toISOString().slice(0, 10),
+    date: formatDateLocal(jsDate),
     startTime,
     endTime,
     location: placeValue,
@@ -224,4 +226,6 @@ window.onload = function() {
   populateDefaultTimeSettings();
   loadDefaultTimes();
 };
+
+
   
