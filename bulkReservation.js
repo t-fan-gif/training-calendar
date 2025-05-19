@@ -128,7 +128,7 @@ selectedDates.forEach((date) => {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyLC-CqOf8QxZ_DErCjKTahspFR_oqzaP6-BG7Bo50-4yCOS26F1Omxl3o50gag4IvB/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzdxb2S3CS67ewPA91XcVwaSsoyFp3Mqc_lPVutuG1gwZQpYbGWrv5-Lf01wGarTJivRQ/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
