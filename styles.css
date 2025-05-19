@@ -20,7 +20,7 @@ body {
 .dropdown-item {
   display: inline-block;
   padding: 8px 25px;
-  background: linear-gradient(0deg, rgb(214, 253, 74), rgb(103, 255, 89));
+  background: linear-gradient(0deg, rgb(199 255 0), rgb(103, 255, 89));
   color: #000;
   text-decoration: none;
   font-size: auto;
@@ -28,14 +28,15 @@ body {
 }
 
 .dropdown-item:hover {
-  background: rgb(34, 199, 48);
+  background: rgb(1 148 13);
+  color:white;
 }
 
 #calendar-title {
   font-family: 'Arial Black', sans-serif;
   font-size: 24px;
   font-weight: bolder;
-  background: linear-gradient(0deg, rgb(103, 255, 89), rgb(0, 175, 93));
+  background: linear-gradient(0deg, rgb(103, 255, 89), rgb(72 255 169));
   padding-top: 25px;
   padding-bottom: 10px;
   padding-left: 20px;
