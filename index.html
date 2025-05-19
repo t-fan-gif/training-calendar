@@ -590,10 +590,10 @@
     </script>
 
     <script>
-     async function deleteReservationById(id) {
+     async function deleteReservationById(tid) {
   try {
     const payload = {
-      Id: tId,
+      Id: tid,
       token: idToken || sessionToken,
       action: "delete",
     };
