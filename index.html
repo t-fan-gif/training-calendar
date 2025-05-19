@@ -591,18 +591,14 @@
 
     <script>
      async function deleteReservationById(tid) {
-  try {
-    const payload = {
+         const payload = {
       Id: tid,
       token: idToken || sessionToken,
       action: "delete",
     };
-
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyO2x6fxJ1KXah6BIt-Q06qmy1oPCRuJmtmllgzE2Ceb_YC0-HmDt8vYS5ycil9UPFcMw/exec", {
+  try {
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbyO2x6fxJ1KXah6BIt-Q06qmy1oPCRuJmtmllgzE2Ceb_YC0-HmDt8vYS5ycil9UPFcMw/exec`, {
       method: "POST",
-      headers: {
-    "Content-Type": "application/json"
-  },
       body: JSON.stringify(payload),
     });
 
