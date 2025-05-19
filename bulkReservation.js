@@ -67,6 +67,13 @@ function populateDefaultTimeSettings() {
   });
 }
 
+function formatDateLocal(date) {
+  const year = date.getFullYear();
+  const month = (`0${date.getMonth() + 1}`).slice(-2);
+  const day = (`0${date.getDate()}`).slice(-2);
+  return `${year}-${month}-${day}`;
+}
+
 /////////予約データ送信用/////////
 async function sendBulkReservations() {
   const button = document.getElementById("vulusend");
@@ -128,7 +135,7 @@ async function sendBulkReservations() {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbywMN4WPEAY2YOS7Hlr_4pKagT_1qKe2ndUKTmNKks1MYxLvJAy-2p7OWTrbbz1ATUFNg/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzyB_zPB2tEMxngGazupOSvPyg8-bGH9XYX93V1V2yto2vK2mu5zJymDA82rv1hjzFp/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
