@@ -137,7 +137,7 @@ async function sendBulkReservations() {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwYzOCwRfliljUYB_H2OY5i5bI_Cd83Q_eIrmVEUew-hdLOH5oEr8nWOUTjSgKkaN8_jw/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwuHMUIbOJwrZO6lgfOfKRGdJiAo9N43WN1ebRbfitka9OvGfJImeVZWrhQlvQfviLWUg/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
