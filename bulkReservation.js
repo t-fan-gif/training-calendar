@@ -104,6 +104,7 @@ async function sendBulkReservations() {
     }
 
     reservations.push({
+      action: "create",
       id: uuid,
       eventType: "練習",
       name: nameValue,
@@ -135,7 +136,7 @@ async function sendBulkReservations() {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyhXOO8Pk4sy_AeIQNBJ7zc1IYUhbqmEEJJOVDZ9tpE6FOhNJjOBYxaNqA0aGkp0KqZXg/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwYzOCwRfliljUYB_H2OY5i5bI_Cd83Q_eIrmVEUew-hdLOH5oEr8nWOUTjSgKkaN8_jw/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
