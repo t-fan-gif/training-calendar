@@ -86,7 +86,8 @@ async function sendBulkReservations() {
   selectedDates.forEach((date) => {
     const uuid = generateUUID();
     const jsDate = new Date(date);
-    const dayIndex = jsDate.getDay(); // 曜日番号（0=日曜）
+    const justDate = formatDateLocal(jsDate);
+    const dayIndex = justDate.getDay(); // 曜日番号（0=日曜）
 
     const placeSelect = document.querySelector(`#defaultTimeTable tr:nth-child(${dayIndex + 1}) select`);
     const startInput = document.getElementById(`start-${dayIndex}`);
@@ -109,7 +110,7 @@ async function sendBulkReservations() {
       eventType: "練習",
       name: nameValue,
       tournamentName: "",
-      date: formatDateLocal(jsDate),
+      date: justDate,
       startTime,
       endTime,
       location: placeValue,
