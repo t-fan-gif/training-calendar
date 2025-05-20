@@ -591,32 +591,39 @@
     </script>
 
     <script>
-     async function deleteReservationById(tid) {
-        const payload = {
-            action: "delete",
-            id: tid,
-            token: idToken || sessionToken,
+        async function deleteReservationById(tid) {
+            const payload = {
+                action: "delete",
+                id: tid,
+            }
+            if (sessionToken) {
+                payload.sessionToken = sessionToken;
+            } else if (idToken) {
+                payload.token = idToken;
+            } else {
+                alert("ログインしてください！");
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://script.google.com/macros/s/AKfycbwYzOCwRfliljUYB_H2OY5i5bI_Cd83Q_eIrmVEUew-hdLOH5oEr8nWOUTjSgKkaN8_jw/exec`, {
+                    method: "POST",
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("予約を削除しました。");
+                    fetchEventsAndShowCalendar(); // カレンダーを再取得
+                    document.getElementById("eventDetailModal").style.display = "none";
+                } else {
+                    alert("削除に失敗しました。");
+                }
+            } catch (error) {
+                console.error("削除エラー", error);
+                alert("通信エラーが発生しました。");
+            }
         }
-
-  try {
-    const response = await fetch(`https://script.google.com/macros/s/AKfycbwYzOCwRfliljUYB_H2OY5i5bI_Cd83Q_eIrmVEUew-hdLOH5oEr8nWOUTjSgKkaN8_jw/exec`, {
-      method: "POST",
-      body: JSON.stringify(payload)
-    });
-
-    const result = await response.json();
-    if (result.success) {
-      alert("予約を削除しました。");
-      fetchEventsAndShowCalendar(); // カレンダーを再取得
-      document.getElementById("eventDetailModal").style.display = "none";
-    } else {
-      alert("削除に失敗しました。");
-    }
-  } catch (error) {
-    console.error("削除エラー", error);
-    alert("通信エラーが発生しました。");
-  }
-}
     </script>
 
 </body>
