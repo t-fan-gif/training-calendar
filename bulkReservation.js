@@ -88,9 +88,9 @@ async function sendBulkReservations() {
     const jsDate = new Date(date);
     const dayIndex = jsDate.getDay(); // 曜日番号（0=日曜）
 
-    const placeSelect = document.querySelector(`#defaultTimeTable tr:nth-child(${dayIndex + 2}) select`);
-    const startInput = document.getElementById(`start-${dayIndex + 1}`);
-    const endInput = document.getElementById(`end-${dayIndex+ 1}`);
+    const placeSelect = document.getElementById(`placeData-${dayIndex}`);
+    const startInput = document.getElementById(`start-${dayIndex}`);
+    const endInput = document.getElementById(`end-${dayIndex}`);
 
     const placeValue = placeSelect?.value || "";
     const startTime = startInput?.value || "";
