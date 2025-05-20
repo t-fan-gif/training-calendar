@@ -86,12 +86,11 @@ async function sendBulkReservations() {
   selectedDates.forEach((date) => {
     const uuid = generateUUID();
     const jsDate = new Date(date);
-    const justDate = formatDateLocal(jsDate);
-    const dayIndex = justDate.getDay(); // 曜日番号（0=日曜）
+    const dayIndex = jsDate.getDay(); // 曜日番号（0=日曜）
 
-    const placeSelect = document.querySelector(`#defaultTimeTable tr:nth-child(${dayIndex + 1}) select`);
-    const startInput = document.getElementById(`start-${dayIndex}`);
-    const endInput = document.getElementById(`end-${dayIndex}`);
+    const placeSelect = document.querySelector(`#defaultTimeTable tr:nth-child(${dayIndex + 2}) select`);
+    const startInput = document.getElementById(`start-${dayIndex + 1}`);
+    const endInput = document.getElementById(`end-${dayIndex+ 1}`);
 
     const placeValue = placeSelect?.value || "";
     const startTime = startInput?.value || "";
@@ -110,7 +109,7 @@ async function sendBulkReservations() {
       eventType: "練習",
       name: nameValue,
       tournamentName: "",
-      date: justDate,
+      date: formatDateLocal(jsDate),
       startTime,
       endTime,
       location: placeValue,
