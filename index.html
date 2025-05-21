@@ -178,7 +178,7 @@
 
         async function fetchEventsAndShowCalendar() {
             try {
-                const url = new URL(`https://script.google.com/macros/s/AKfycbyYLT8ajK27ygQ4qeMnbqXSNWFNSH5R2BN_6Z3y-BzmXjrRCYjTu8k2GFD3E-nDNZZVjg/exec`);
+                const url = new URL(`https://script.google.com/macros/s/AKfycbyOQzs8wShmrWtGaJyQb8BOwsezj8lJFriCsOSW4Q_fKz0RgG8Jzc1pxIzDw8PgPalq/exec`);
                 if (sessionToken) {
                     url.searchParams.append('sessionToken', sessionToken);
                 } else if (idToken) {
@@ -408,7 +408,7 @@
             button.textContent = "送信中";
 
             try {
-                const response = await fetch(`https://script.google.com/macros/s/AKfycbw7d0qrZvb2orwvPnC-EOffhQaT6zh_IPRK393ATUAkHZdb_MCKi0QMGBBA_Qu3V_N_Ig/exec`, {
+                const response = await fetch(`https://script.google.com/macros/s/AKfycbx8JEBp9dbohHd-MU-nJdn-bAWJhGdH1QXV39J74sDq8he59ecgf3O2DwGyBr90qhOO/exec`, {
                     method: "POST",
                     body: JSON.stringify(data),
                 });
@@ -612,7 +612,7 @@
             }
 
             try {
-                const response = await fetch(`https://script.google.com/macros/s/AKfycbw7d0qrZvb2orwvPnC-EOffhQaT6zh_IPRK393ATUAkHZdb_MCKi0QMGBBA_Qu3V_N_Ig/exec`, {
+                const response = await fetch(`https://script.google.com/macros/s/AKfycbx8JEBp9dbohHd-MU-nJdn-bAWJhGdH1QXV39J74sDq8he59ecgf3O2DwGyBr90qhOO/exec`, {
                     method: "POST",
                     body: JSON.stringify(data),
                 });
