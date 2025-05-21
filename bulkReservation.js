@@ -140,7 +140,7 @@ async function sendBulkReservations() {
   button.textContent = "送信中";
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwQNNb4peQZrEEJ7skQBesNEnf6oIbadBg1KgLsJu0HLanvKi4aBx9ShnzfdQegzw7azQ/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbw7d0qrZvb2orwvPnC-EOffhQaT6zh_IPRK393ATUAkHZdb_MCKi0QMGBBA_Qu3V_N_Ig/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
