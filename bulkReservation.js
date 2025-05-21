@@ -131,7 +131,7 @@ async function sendBulkReservations() {
   } else {
     alert("ログインしてください！");
     button.disabled = false;
-    button.textContent = "送信";
+    button.textContent = "送信中";
     return;
   }
 
@@ -153,7 +153,7 @@ async function sendBulkReservations() {
     alert("通信エラーが発生しました。");
   } finally {
     button.disabled = false;
-    button.textContent = "送信";
+    button.textContent = "予約送信";
   }
 }
 
