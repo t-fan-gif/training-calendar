@@ -375,7 +375,7 @@
                 locationValue = selectedRadio.value;
             }
 
-            if (form.startTime === form.endTime) {
+            if (form.startTime.value === form.endTime.value) {
                 alert(`開始時間、終了時間をすべて指定してください。`);
                 return;
             }
