@@ -102,12 +102,12 @@
                     <label for="startTime">開始時間:</label>
                     <button type="button" id="fullDayButton">1日</button>
                 </div>
-                <input type="time" id="startTime" name="startTime" value="06:00">
+                <input type="time" id="startTime" name="startTime" value="00:00">
             </div>
 
             <div class="form-group">
                 <label for="endTime">終了時間:</label>
-                <input type="time" id="endTime" name="endTime">
+                <input type="time" id="endTime" name="endTime" value="00:00">
             </div>
         </div>
         <div class="form-thirdline">
@@ -373,6 +373,11 @@
                 locationValue = otherValue;
             } else {
                 locationValue = selectedRadio.value;
+            }
+
+            if (startTime === endTime) {
+                alert(`開始時間、終了時間をすべて指定してください。`);
+                return;
             }
 
 
