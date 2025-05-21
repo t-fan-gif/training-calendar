@@ -59,6 +59,8 @@
   transform-origin: top center;
   margin: auto;
   }
+
+  
   @media (max-width: 768px) {
   #defoltTitle {
     margin-top: 1%;
