@@ -25,6 +25,7 @@ function home() {
   document.getElementById("reservationForm").style.display = "block"; // 単一予約フォーム表示
   document.getElementById("bulkReservationPage").style.display = "none"; // 一括予約非表示
   document.getElementById("listChange").style.display = "flex"; // リストボタン非表示
+  fetchEventsAndShowCalendar(); // ←カレンダー再取得！
 }
 
 // 日付選択用のflatpickr初期化
