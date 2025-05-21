@@ -616,14 +616,14 @@
                 // とりあえず削除成功とみなす
                 alert("予約を削除しました。");
                 fetchEventsAndShowCalendar(); // カレンダー再取得
-                document.getElementById("eventDetailModal").style.display = "none";
+                document.getElementById("eventModal").style.display = "none";
 
             } catch (error) {
                 // 通信エラーはログだけ出して処理は成功扱いにする
                 console.warn("削除時の通信エラー（CORS含む）を無視:", error);
                 alert("予約を削除しました。");
                 fetchEventsAndShowCalendar();
-                document.getElementById("eventDetailModal").style.display = "none";
+                document.getElementById("eventModal").style.display = "none";
             }
         }
     </script>

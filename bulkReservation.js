@@ -131,9 +131,12 @@ async function sendBulkReservations() {
   } else {
     alert("ログインしてください！");
     button.disabled = false;
-    button.textContent = "送信中";
+    button.textContent = "予約送信";
     return;
   }
+
+  button.disabled = true;
+  button.textContent = "送信中";
 
   try {
     const response = await fetch("https://script.google.com/macros/s/AKfycbwQNNb4peQZrEEJ7skQBesNEnf6oIbadBg1KgLsJu0HLanvKi4aBx9ShnzfdQegzw7azQ/exec", {
