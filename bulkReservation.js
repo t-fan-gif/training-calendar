@@ -97,7 +97,7 @@ async function sendBulkReservations() {
     const endTime = endInput?.value || "";
 
     // 必須設定が不足している場合はエラーフラグを立てる
-    if (placeValue === "選択なし" || startTime === "" || endTime === "") {
+    if (placeValue === "選択なし" || startTime === endTime) {
       alert(`「${date.toLocaleDateString()}」の設定が不足しています。\n場所、開始時間、終了時間をすべて指定してください。`);
       hasInvalidSetting = true;
       return;
@@ -136,7 +136,7 @@ async function sendBulkReservations() {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwN-jsB479MLVrvGdy_YKtKI2lsCtvILOWU7uZdcE5pxC-SRUteZ9y0Zr0mbsgi1Opm/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwQNNb4peQZrEEJ7skQBesNEnf6oIbadBg1KgLsJu0HLanvKi4aBx9ShnzfdQegzw7azQ/exec", {
       method: "POST",
       body: JSON.stringify(payload)
     });
