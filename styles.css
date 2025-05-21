@@ -208,6 +208,17 @@ body {
   color: black !important;
 }
 
+/* 土曜日：薄い青 */
+.fc-day-sat {
+  background-color: #e6f7ff;
+}
+
+/* 日曜日：薄いピンク */
+.fc-day-sun {
+  background-color: #ffe6e6;
+}
+
+
 #reloadButton {
   position: fixed;
   /* 画面上で固定位置に配置 */
