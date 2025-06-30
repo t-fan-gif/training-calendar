@@ -346,44 +346,7 @@
             calendar.render();
         }
 
-    const eventTypeSelect = document.getElementById('eventTypeSelect');
-    const nameInput = document.getElementById('nameInput');
-    const tournamentNameInput = document.getElementById('tournamentNameInput');
-
-    // 選択状態を localStorage に保存
-    eventTypeSelect.addEventListener('change', () => {
-        localStorage.setItem('selectedEventType', eventTypeSelect.value);
-        updateInputState(eventTypeSelect.value);
-    });
-
-    // 状態を更新する関数
-    function updateInputState(selectedValue) {
-        if (selectedValue === '練習') {
-            nameInput.disabled = false;
-            nameInput.value = '';
-            tournamentNameInput.disabled = true;
-        } else if (selectedValue === '大会') {
-            nameInput.disabled = false;
-            nameInput.value = '';
-            tournamentNameInput.disabled = false;
-        } else if (selectedValue === '使用不可') {
-            nameInput.disabled = true;
-            nameInput.value = '使用不可';
-            tournamentNameInput.disabled = true;
-        }
-    }
-
-    // ページ読み込み時にlocalStorageから状態を復元
-    window.addEventListener('DOMContentLoaded', () => {
-        const savedValue = localStorage.getItem('selectedEventType');
-        if (savedValue) {
-            eventTypeSelect.value = savedValue;
-            updateInputState(savedValue);
-        } else {
-            updateInputState(eventTypeSelect.value); // デフォルトの初期化
-        }
-    });
-
+        // フォーム送信処理
         document.getElementById("reservationForm").addEventListener("submit", async (e) => {
             e.preventDefault();
             const form = e.target;
@@ -445,7 +408,7 @@
             button.textContent = "送信中";
 
             try {
-                const response = await fetch(`https://script.google.com/macros/s/AKfycbzWeQf2Z8-FJoiKPjSFFCiMHjKoDBF5CTasVIkV0vdW7BFN3Snm8NcUIRA3F0B7eTh6vA/exec`, {
+                const response = await fetch(`https://script.google.com/macros/s/AKfycbxDO15IQs9BIEV-5I1OFYNfRTMzKUi6fX97G7PUdAWQusy75_9OhmThHaVtgbq0uwdM/exec`, {
                     method: "POST",
                     body: JSON.stringify(data),
                 });
@@ -468,11 +431,53 @@
         });
         // ページをリロードする関数
         function reloadPage() {
-            localStorage.removeItem('selectedEventType');
             location.reload(); // ページをリロード
         }
     </script>
 
+
+    <script>
+        const eventTypeSelect = document.getElementById('eventType');
+        const nameInput = document.getElementById('name');
+        const tournamentNameInput = document.getElementById('tournamentName');
+
+        // ドロップダウン変更時の動き
+        eventTypeSelect.addEventListener('change', function () {
+            const selectedValue = this.value;
+
+            if (selectedValue === '練習') {
+                nameInput.disabled = false;
+                nameInput.value = '';
+                tournamentNameInput.disabled = true;
+            } else if (selectedValue === '大会') {
+                nameInput.disabled = false;
+                nameInput.value = '';
+                tournamentNameInput.disabled = false;
+            } else if (selectedValue === '使用不可') {
+                nameInput.disabled = true;
+                nameInput.value = '使用不可'; // ← ここも自動入力
+                tournamentNameInput.disabled = true;
+            }
+        });
+
+        // ページ読み込み時にも一応セットしておく（リロード対策）
+        window.addEventListener('DOMContentLoaded', () => {
+            const selectedValue = eventTypeSelect.value;
+            if (selectedValue === '練習') {
+                nameInput.disabled = false;
+                nameInput.value = '';
+                tournamentNameInput.disabled = true;
+            } else if (selectedValue === '大会') {
+                nameInput.disabled = false;
+                nameInput.value = '';
+                tournamentNameInput.disabled = false;
+            } else if (selectedValue === '使用不可') {
+                nameInput.disabled = true;
+                nameInput.value = '使用不可';
+                tournamentNameInput.disabled = true;
+            }
+        });
+    </script>
 
     <!-- //1日ボタンのJava -->
     <script>
